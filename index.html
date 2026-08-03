@@ -3,41 +3,199 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portal de Apoio - Respeito e Combate ao Machismo</title>
+  <title>Portal Conecta - Igualdade & Respeito na Escola</title>
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
   <div class="top-bar">
-    <button id="btn-contrast"><i class="fas fa-adjust"></i> Alto Contraste</button>
-    <button id="btn-font-increase"><i class="fas fa-font"></i> Aumentar Fonte</button>
-    <button id="btn-font-reset"><i class="fas fa-redo"></i> Fonte Normal</button>
+    <div class="container top-bar-content">
+      <span class="tag-badge"><i class="fas fa-heart"></i> Espaço Seguro & Acolhedor</span>
+      <div class="access-buttons">
+        <button id="btn-contrast" title="Alternar Contraste"><i class="fas fa-adjust"></i> Alto Contraste</button>
+        <button id="btn-font-increase" title="Aumentar Texto"><i class="fas fa-font"></i> A+</button>
+        <button id="btn-font-reset" title="Tamanho Normal"><i class="fas fa-redo"></i> A-</button>
+      </div>
+    </div>
   </div>
 
   <header>
-    <div class="logo">
-      <h1><i class="fas fa-hands-helping"></i> Escola Sem Machismo</h1>
+    <div class="container header-container">
+      <div class="logo">
+        <i class="fas fa-hand-holding-heart logo-icon"></i>
+        <div>
+          <h1>Portal Conecta</h1>
+          <span class="sub-logo">Apoio Escolar & Respeito</span>
+        </div>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#inicio"><i class="fas fa-home"></i> Início</a></li>
+          <li><a href="#aprender"><i class="fas fa-book-open"></i> Entenda</a></li>
+          <li><a href="#escuta"><i class="fas fa-comment-dots"></i> Escuta</a></li>
+          <li><a href="#quiz"><i class="fas fa-gamepad"></i> Quiz</a></li>
+          <li><a href="#referencias"><i class="fas fa-bookmark"></i> Fontes</a></li>
+        </ul>
+      </nav>
     </div>
-    <nav>
-      <ul>
-        <li><a href="#inicio">Início</a></li>
-        <li><a href="#escuta">Portal de Escuta</a></li>
-        <li><a href="#quiz">Quiz Interativo</a></li>
-        <li><a href="#referencias">Referências</a></li>
-      </ul>
-    </nav>
   </header>
 
   <main>
-    <section id="inicio" class="hero">
-      <div class="hero-content">
-        <h2>Construindo um Espaço de Respeito e Igualdade</h2>
-        <p class="welcome-msg">
-          "Bem-vindo ao Portal de Apoio ao Estudante. Aqui você encontrará informações, orientações e apoio sobre situações vivenciadas no ambiente escolar. Vamos juntos combater o machismo com respeito e empatia!"
-        </p>
-        <div class="info-cards">
-          <article class="card">
-            <i class="fas fa-shield-alt icon"></i>
+    <section id="inicio" class="hero-section">
+      <div class="container hero-grid">
+        <div class="hero-text">
+          <span class="pill-tag">Projeto Escolar de Acolhimento</span>
+          <h2>Juntos Construindo um Ambiente Sem Machismo</h2>
+          <p class="welcome-msg">
+            "Bem-vindo ao Portal de Apoio ao Estudante. Aqui você encontrará informações, orientações e apoio sobre situações vivenciadas no ambiente escolar. Vamos juntos combater o machismo com empatia, conscientização e respeito!"
+          </p>
+          <div class="hero-buttons">
+            <a href="#escuta" class="btn btn-primary"><i class="fas fa-headset"></i> Ir para o Portal de Escuta</a>
+            <a href="#quiz" class="btn btn-secondary"><i class="fas fa-star"></i> Testar Conhecimentos</a>
+          </div>
+        </div>
+
+        <div class="carousel-card">
+          <div class="carousel-item active">
+            <i class="fas fa-quote-left quote-icon"></i>
+            <p>Respeito não é favor, é um direito de todas as pessoas dentro e fora da sala de aula.</p>
+            <span>— Conscientização Escolar</span>
+          </div>
+          <div class="carousel-item">
+            <i class="fas fa-hands-helping quote-icon"></i>
+            <p>Desconstruir piadas machistas é o primeiro passo para criar amizades mais verdadeiras.</p>
+            <span>— Cultura de Paz</span>
+          </div>
+          <div class="carousel-dots">
+            <span class="dot active" onclick="setSlide(0)"></span>
+            <span class="dot" onclick="setSlide(1)"></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="aprender" class="section">
+      <div class="container">
+        <div class="section-title">
+          <h2><i class="fas fa-lightbulb"></i> Entendendo o Machismo na Escola</h2>
+          <p>Para mudar atitudes, primeiro precisamos reconhecer como o preconceito se manifesta.</p>
+        </div>
+
+        <div class="cards-grid">
+          <article class="info-card">
+            <div class="card-icon bg-purple"><i class="fas fa-genderless"></i></div>
             <h3>O que é Machismo?</h3>
-            <p>É o preconceito ou crença de que os homens têm mais direitos ou autoridade que as mulheres. No ambiente escolar, ele se manifesta em piadas, divisões injustas ou desrespeito.</p>
+            <p>É a crença equivocada de que os homens possuem superioridade sobre as mulheres. Isso gera desigualdades na convivência, nos estudos e na sociedade.</p>
+          </article>
+
+          <article class="info-card">
+            <div class="card-icon bg-orange"><i class="fas fa-comments"></i></div>
+            <h3>Microagressões</h3>
+            <p>Comentários 'disfarçados' de piadas, interrupções constantes quando uma menina fala ou julgamentos pela forma de se vestir são formas de machismo.</p>
+          </article>
+
+          <article class="info-card">
+            <div class="card-icon bg-lilac"><i class="fas fa-balance-scale"></i></div>
+            <h3>Igualdade de Oportunidade</h3>
+            <p>Todos têm o direito de escolher suas matérias favoritas, esportes e profissões sem serem rotulados por estereótipos de gênero.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="escuta" class="section highlight-bg">
+      <div class="container">
+        <div class="section-title">
+          <h2><i class="fas fa-heartbeat"></i> Portal de Escuta Segura</h2>
+          <p>Sinta-se à vontade para expressar sentimentos ou dúvidas de forma totalmente anônima.</p>
+        </div>
+
+        <div class="escuta-grid">
+          <div class="form-container">
+            <form id="form-escuta">
+              <label for="desabafo"><i class="fas fa-pen-fancy"></i> Escreva seu desabafo ou situação vivenciada:</label>
+              <textarea id="desabafo" rows="5" placeholder="Digite aqui... Lembre-se: este campo é um espaço seguro de simulação." required></textarea>
+              <button type="submit" class="btn btn-primary btn-block"><i class="fas fa-paper-plane"></i> Enviar Desabafo (Simulado)</button>
+            </form>
+            <div id="resposta-escuta" class="feedback-card hidden"></div>
+          </div>
+
+          <div class="support-info">
+            <h3><i class="fas fa-life-ring"></i> Onde Encontrar Ajuda Real?</h3>
+            <p>Você nunca está só. Se precisar de apoio imediato ou orientação, procure pessoas e órgãos capacitados:</p>
+            <ul class="support-list">
+              <li><i class="fas fa-chalkboard-teacher"></i> <strong>Professores e Pedagogos:</strong> Estão prontos para ouvir e intervir.</li>
+              <li><i class="fas fa-user-shield"></i> <strong>Direção da Escola:</strong> Para relatar casos graves ou recorrentes.</li>
+              <li><i class="fas fa-users"></i> <strong>Família ou Responsáveis:</strong> Converse com adultos em quem confia.</li>
+              <li><i class="fas fa-phone-alt"></i> <strong>Ligue 180:</strong> Central de Atendimento à Mulher (Gratuito e Anônimo).</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="quiz" class="section">
+      <div class="container">
+        <div class="section-title">
+          <h2><i class="fas fa-check-circle"></i> Quiz Interativo de Conscientização</h2>
+          <p>Responda às 5 perguntas abaixo e teste seus conhecimentos sobre atitudes de respeito!</p>
+        </div>
+
+        <div class="quiz-wrapper">
+          <div id="quiz-container">
+            </div>
+          <div class="quiz-actions">
+            <button id="btn-submit-quiz" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Finalizar Quiz</button>
+          </div>
+          <div id="quiz-resultado" class="result-banner hidden"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="referencias" class="section highlight-bg">
+      <div class="container">
+        <div class="section-title">
+          <h2><i class="fas fa-graduation-cap"></i> Referências Confiáveis</h2>
+          <p>Conteúdos e materiais educativos utilizados para embasar este projeto:</p>
+        </div>
+
+        <div class="ref-grid">
+          <a href="https://www.gov.br/mulheres/pt-br" target="_blank" class="ref-card">
+            <i class="fas fa-building"></i>
+            <div>
+              <h4>Ministério das Mulheres</h4>
+              <p>Políticas públicas de combate à violência e promoção da igualdade.</p>
+            </div>
+          </a>
+
+          <a href="https://www.unicef.org/brazil/" target="_blank" class="ref-card">
+            <i class="fas fa-child"></i>
+            <div>
+              <h4>UNICEF Brasil</h4>
+              <p>Direitos da infância, adolescência e proteção contra discriminações.</p>
+            </div>
+          </a>
+
+          <a href="https://www.institutoamaria.org.br/" target="_blank" class="ref-card">
+            <i class="fas fa-book"></i>
+            <div>
+              <h4>Instituto Maria da Penha</h4>
+              <p>Projetos educativos de prevenção e conscientização nas escolas.</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-content">
+      <p>&copy; 2026 Portal Conecta | Criado para fins educativos e conscientização escolar.</p>
+      <button id="btn-top" title="Voltar ao topo"><i class="fas fa-arrow-up"></i> Topo</button>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
