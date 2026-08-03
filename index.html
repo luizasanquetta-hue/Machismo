@@ -1,155 +1,237 @@
-// --- 1. Acessibilidade (Tamanho da Fonte e Alto Contraste) ---
-const btnContrast = document.getElementById('btn-contrast');
-const btnFontIncrease = document.getElementById('btn-font-increase');
-const btnFontReset = document.getElementById('btn-font-reset');
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portal Conecta - Apoio e Respeito Estudantil</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
 
-btnContrast.addEventListener('click', () => {
-  document.body.classList.toggle('high-contrast');
-});
+  <div class="top-bar">
+    <div class="container top-bar-content">
+      <span class="tag-badge"><i class="fas fa-heart"></i> Espaço de Apoio Estudantil</span>
+      <div class="access-buttons">
+        <button id="btn-contrast"><i class="fas fa-adjust"></i> Alto Contraste</button>
+        <button id="btn-font-increase"><i class="fas fa-font"></i> A+</button>
+        <button id="btn-font-reset"><i class="fas fa-redo"></i> A-</button>
+      </div>
+    </div>
+  </div>
 
-let currentFontSize = 16;
-btnFontIncrease.addEventListener('click', () => {
-  if (currentFontSize < 22) {
-    currentFontSize += 2;
-    document.documentElement.style.setProperty('--font-size-base', `${currentFontSize}px`);
-  }
-});
+  <header>
+    <div class="container header-container">
+      <div class="logo">
+        <i class="fas fa-hands-holding-heart logo-icon"></i>
+        <div>
+          <h1>Portal Conecta</h1>
+          <span class="sub-logo">Respeito, Igualdade e Empatia</span>
+        </div>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#inicio">Início</a></li>
+          <li><a href="#aprender">Entenda</a></li>
+          <li><a href="#atitudes">Atitudes</a></li>
+          <li><a href="#escuta">Escuta</a></li>
+          <li><a href="#quiz">Quiz</a></li>
+          <li><a href="#referencias">Fontes</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-btnFontReset.addEventListener('click', () => {
-  currentFontSize = 16;
-  document.documentElement.style.setProperty('--font-size-base', '16px');
-});
+  <main>
+    <section id="inicio" class="hero-section">
+      <div class="container hero-grid">
+        <div class="hero-text">
+          <span class="pill-tag">Projeto Escolar de Conscientização</span>
+          <h2>Construindo uma Escola Sem Machismo e Preconceito</h2>
+          <div class="welcome-msg">
+            "Bem-vindo ao Portal de Apoio ao Estudante. Aqui você encontrará informações, orientações e apoio sobre situações vivenciadas no ambiente escolar. Vamos juntos combater o machismo com empatia, respeito e união!"
+          </div>
+          <p>
+            A escola é o espaço onde desenvolvemos ideias, criamos laços e preparamos nosso futuro. Garantir um ambiente seguro e respeitoso para todas as alunas e alunos é fundamental.
+          </p>
+          <div class="hero-buttons">
+            <a href="#escuta" class="btn btn-primary"><i class="fas fa-comment-medical"></i> Portal de Escuta</a>
+            <a href="#quiz" class="btn btn-secondary"><i class="fas fa-gamepad"></i> Fazer o Quiz</a>
+          </div>
+        </div>
 
-// --- 2. Carrossel de Frases ---
-let currentSlide = 0;
-const slides = document.querySelectorAll('.carousel-item');
-const dots = document.querySelectorAll('.dot');
+        <div class="carousel-card">
+          <div class="carousel-item active">
+            <i class="fas fa-quote-left quote-icon"></i>
+            <p>O respeito mútuo fortalece nossa convivência e transforma diferenças em aprendizado.</p>
+            <span>— Cultura de Paz</span>
+          </div>
+          <div class="carousel-item">
+            <i class="fas fa-quote-left quote-icon"></i>
+            <p>Lugar de mulher é onde ela quiser: na ciência, na liderança, nos esportes e na sociedade.</p>
+            <span>— Igualdade e Direitos</span>
+          </div>
+          <div class="carousel-dots">
+            <span class="dot active" onclick="setSlide(0)"></span>
+            <span class="dot" onclick="setSlide(1)"></span>
+          </div>
+        </div>
+      </div>
+    </section>
 
-function setSlide(index) {
-  slides.forEach(s => s.classList.remove('active'));
-  dots.forEach(d => d.classList.remove('active'));
-  
-  slides[index].classList.add('active');
-  dots[index].classList.add('active');
-  currentSlide = index;
-}
+    <section id="aprender" class="section">
+      <div class="container">
+        <div class="section-title">
+          <h2><i class="fas fa-lightbulb"></i> Entendendo o Machismo no Cotidiano</h2>
+          <p>Reconhecer comportamentos equivocados é o primeiro passo para a mudança.</p>
+        </div>
 
-setInterval(() => {
-  currentSlide = (currentSlide + 1) % slides.length;
-  setSlide(currentSlide);
-}, 6000);
+        <div class="cards-grid">
+          <article class="info-card">
+            <div class="card-icon bg-lilac"><i class="fas fa-balance-scale"></i></div>
+            <h3>O que é Machismo?</h3>
+            <p>É o conjunto de crenças ou atitudes que colocam os homens em posição de superioridade em relação às mulheres, gerando desigualdades na escola e na sociedade.</p>
+          </article>
 
-// --- 3. Portal de Escuta (Simulação de Envio) ---
-const formEscuta = document.getElementById('form-escuta');
-const respostaEscuta = document.getElementById('resposta-escuta');
+          <article class="info-card">
+            <div class="card-icon bg-pink"><i class="fas fa-comments"></i></div>
+            <h3>Microagressões</h3>
+            <p>Piadas ofensivas, interrupções frequentes quando meninas falam ou julgamentos pelo modo de vestir são atitudes que devem ser evitadas e combatidas.</p>
+          </article>
 
-const mensagensAcolhimento = [
-  "Sua palavra e seus sentimentos contam. No ambiente escolar, existem professores e pedagogos sempre prontos para apoiar você.",
-  "Obrigado por compartilhar! O diálogo e a empatia são nossas melhores ferramentas contra qualquer tipo de preconceito.",
-  "Sua atitude em refletir sobre o tema já ajuda a construir uma escola mais acolhedora. Nunca hesite em buscar ajuda!"
-];
+          <article class="info-card">
+            <div class="card-icon bg-orange"><i class="fas fa-hand-holding-heart"></i></div>
+            <h3>Empatia Coletiva</h3>
+            <p>Desconstruir velhos preconceitos melhora a convivência de todos e permite que estudantes se expressem com liberdade e segurança.</p>
+          </article>
+        </div>
+      </div>
+    </section>
 
-formEscuta.addEventListener('submit', (e) => {
-  e.preventDefault();
-  
-  const mensagem = mensagensAcolhimento[Math.floor(Math.random() * mensagensAcolhimento.length)];
-  
-  respostaEscuta.className = "welcome-msg";
-  respostaEscuta.style.marginTop = "15px";
-  respostaEscuta.innerHTML = `
-    <strong><i class="fas fa-heart"></i> Mensagem de Acolhimento:</strong>
-    <p style="margin-top:5px;">${mensagem}</p>
-    <small style="display:block; margin-top:8px; color: var(--text-muted);">*Lembre-se: esta é uma simulação. Nenhuma informação pessoal foi salva.</small>
-  `;
-  
-  document.getElementById('desabafo').value = '';
-});
+    <section id="atitudes" class="section">
+      <div class="container">
+        <div class="section-title">
+          <h2><i class="fas fa-seedling"></i> Atitudes Práticas na Escola</h2>
+          <p>Pequenas ações diárias transformam a rotina escolar.</p>
+        </div>
 
-// --- 4. Quiz Interativo (5 Perguntas) ---
-const perguntasQuiz = [
-  {
-    pergunta: "1. Fazer piadas que inferiorizam alunas devido ao gênero é considerado:",
-    opcoes: ["Uma brincadeira aceitável", "Atitude machista e desrespeitosa", "Apenas modo de falar sem intenção"],
-    correta: 1
-  },
-  {
-    pergunta: "2. Quando uma garota é constantemente interrompida durante uma apresentação, isso representa:",
-    opcoes: ["Participação ativa da turma", "Liderança natural dos meninos", "Silenciamento e falta de respeito"],
-    correta: 2
-  },
-  {
-    pergunta: "3. Qual atitude tomar ao presenciar uma colega sofrendo assédio ou intimidação?",
-    opcoes: ["Ignorar para evitar intrigas", "Oferecer apoio e avisar um adulto de confiança na escola", "Rir com o restante do grupo"],
-    correta: 1
-  },
-  {
-    pergunta: "4. Dizer que 'certas matérias ou áreas (como robótica ou física) são só para meninos' é:",
-    opcoes: ["Um estereótipo machista e ultrapassado", "Uma constatação científica", "Uma regra sem importância"],
-    correta: 0
-  },
-  {
-    pergunta: "5. O objetivo de combater o machismo na escola é:",
-    opcoes: ["Privilegiar apenas as alunas", "Garantir igualdade de oportunidades, respeito e convivência saudável para todos", "Impor regras rígidas para os garotos"],
-    correta: 1
-  }
-];
+        <div class="guide-box">
+          <div class="guide-step">
+            <span class="step-num">1</span>
+            <div>
+              <h4>Respeite a Fala</h4>
+              <p>Escute as opiniões das suas colegas em trabalhos de grupo e debates sem interrompê-las.</p>
+            </div>
+          </div>
+          <div class="guide-step">
+            <span class="step-num">2</span>
+            <div>
+              <h4>Não Espalhe Comentários Sexistas</h4>
+              <p>Não apoie ou compartilhe brincadeiras e piadas que diminuam as mulheres.</p>
+            </div>
+          </div>
+          <div class="guide-step">
+            <span class="step-num">3</span>
+            <div>
+              <h4>Ofereça Apoio</h4>
+              <p>Se notar que alguém está sofrendo intimidação ou discriminação, mostre solidariedade e procure ajuda pedagógica.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-const quizContainer = document.getElementById('quiz-container');
-const btnSubmitQuiz = document.getElementById('btn-submit-quiz');
-const quizResultado = document.getElementById('quiz-resultado');
+    <section id="escuta" class="section">
+      <div class="container">
+        <div class="section-title">
+          <h2><i class="fas fa-heartbeat"></i> Portal de Escuta</h2>
+          <p>Espaço simulado para desabafar, refletir e encontrar apoio.</p>
+        </div>
 
-function carregarQuiz() {
-  quizContainer.innerHTML = '';
-  perguntasQuiz.forEach((q, index) => {
-    const item = document.createElement('div');
-    item.className = 'quiz-item';
-    
-    let html = `<h4>${q.pergunta}</h4><div class="quiz-options">`;
-    q.opcoes.forEach((opcao, oIndex) => {
-      html += `
-        <label>
-          <input type="radio" name="pergunta${index}" value="${oIndex}">
-          ${opcao}
-        </label>
-      `;
-    });
-    html += `</div>`;
-    item.innerHTML = html;
-    quizContainer.appendChild(item);
-  });
-}
+        <div class="escuta-grid">
+          <div class="form-container">
+            <form id="form-escuta">
+              <label for="desabafo"><i class="fas fa-pen-fancy"></i> Escreva sua dúvida ou desabafo:</label>
+              <textarea id="desabafo" rows="5" placeholder="Digite sua mensagem aqui... Este formulário não grava nenhum dado pessoal." required></textarea>
+              <button type="submit" class="btn btn-primary btn-block"><i class="fas fa-paper-plane"></i> Enviar Desabafo (Simulação)</button>
+            </form>
+            <div id="resposta-escuta" class="feedback-card hidden"></div>
+          </div>
 
-btnSubmitQuiz.addEventListener('click', () => {
-  let acertos = 0;
-  let respondidas = 0;
+          <div class="support-info">
+            <h3><i class="fas fa-life-ring"></i> Apoio e Canais Oficiais</h3>
+            <p>Se você precisa de ajuda real, procure pessoas e canais de confiança:</p>
+            <ul class="support-list">
+              <li><i class="fas fa-chalkboard-teacher"></i> <strong>Professores e Pedagogos:</strong> Orientação no ambiente escolar.</li>
+              <li><i class="fas fa-user-shield"></i> <strong>Direção Escolar:</strong> Encaminhamento de casos de discriminação.</li>
+              <li><i class="fas fa-phone-alt"></i> <strong>Ligue 180:</strong> Central de Atendimento à Mulher.</li>
+              <li><i class="fas fa-shield-alt"></i> <strong>Disque 100:</strong> Violação dos Direitos Humanos.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  perguntasQuiz.forEach((q, index) => {
-    const selecionada = document.querySelector(`input[name="pergunta${index}"]:checked`);
-    if (selecionada) {
-      respondidas++;
-      if (parseInt(selecionada.value) === q.correta) {
-        acertos++;
-      }
-    }
-  });
+    <section id="quiz" class="section">
+      <div class="container">
+        <div class="section-title">
+          <h2><i class="fas fa-check-circle"></i> Quiz Interativo</h2>
+          <p>Responda às 5 perguntas abaixo e avalie seus conhecimentos!</p>
+        </div>
 
-  if (respondidas < perguntasQuiz.length) {
-    alert("Por favor, responda a todas as 5 perguntas antes de concluir!");
-    return;
-  }
+        <div class="quiz-wrapper">
+          <div id="quiz-container"></div>
+          <div class="quiz-actions">
+            <button id="btn-submit-quiz" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Finalizar Quiz</button>
+          </div>
+          <div id="quiz-resultado" class="result-banner hidden"></div>
+        </div>
+      </div>
+    </section>
 
-  quizResultado.classList.remove('hidden');
-  quizResultado.innerHTML = `
-    <i class="fas fa-trophy" style="font-size:1.8rem;"></i><br>
-    Você acertou <strong>${acertos} de ${perguntasQuiz.length}</strong> perguntas! <br>
-    ${acertos >= 4 ? 'Excelente conscientização! Você ajuda a transformar a escola num lugar melhor!' : 'Continue refletindo e aprendendo sobre a importância do respeito mútuo.'}
-  `;
-});
+    <section id="referencias" class="section">
+      <div class="container">
+        <div class="section-title">
+          <h2><i class="fas fa-graduation-cap"></i> Referências Confiáveis</h2>
+          <p>Fontes de pesquisa e materiais educativos:</p>
+        </div>
 
-carregarQuiz();
+        <div class="ref-grid">
+          <a href="https://www.gov.br/mulheres/pt-br" target="_blank" rel="noopener" class="ref-card">
+            <i class="fas fa-building"></i>
+            <div>
+              <h4>Ministério das Mulheres</h4>
+              <p>Iniciativas públicas de promoção da igualdade.</p>
+            </div>
+          </a>
 
-// --- 5. Botão Voltar ao Topo ---
-const btnTop = document.getElementById('btn-top');
-btnTop.addEventListener('click', () => {
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-});
+          <a href="https://www.unicef.org/brazil/" target="_blank" rel="noopener" class="ref-card">
+            <i class="fas fa-child"></i>
+            <div>
+              <h4>UNICEF Brasil</h4>
+              <p>Direitos da infância e adolescência.</p>
+            </div>
+          </a>
+
+          <a href="https://www.institutoamaria.org.br/" target="_blank" rel="noopener" class="ref-card">
+            <i class="fas fa-book"></i>
+            <div>
+              <h4>Instituto Maria da Penha</h4>
+              <p>Ações educativas de prevenção à violência.</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-content">
+      <p>&copy; 2026 Portal Conecta | Projeto Escolar Informativo</p>
+      <button id="btn-top"><i class="fas fa-arrow-up"></i> Topo</button>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
