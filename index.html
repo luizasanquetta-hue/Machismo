@@ -1,271 +1,184 @@
-/* Variáveis para gerenciamento de cores e temas (Modo Claro/Escuro) */
-:root {
-    --bg-color: #f8f9fa;
-    --text-color: #333333;
-    --card-bg: #ffffff;
-    --primary-color: #6f42c1;
-    --secondary-color: #e9ecef;
-    --accent-color: #20c997;
-    --border-color: #dddddd;
-    --font-base: 16px;
+// --- SISTEMA DE NAVEGAÇÃO DE ABAS ---
+const links = document.querySelectorAll('.nav-link');
+const tabs = document.querySelectorAll('.tab-content');
+
+links.forEach(link => {
+    link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const target = link.getAttribute('data-target');
+
+        // Alterna classes dos links
+        links.forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+
+        // Alterna visibilidade das abas
+        tabs.forEach(tab => {
+            if (tab.id === target) {
+                tab.classList.add('active-tab');
+            } else {
+                tab.classList.remove('active-tab');
+            }
+        });
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+});
+
+// --- ACCESSIBILIDADE E MODO ESCURO ---
+const btnContrast = document.getElementById('btn-contrast');
+const btnFontPlus = document.getElementById('btn-font-plus');
+const btnFontMinus = document.getElementById('btn-font-minus');
+let currentFontSize = 16;
+
+btnContrast.addEventListener('click', () => {
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    if (currentTheme === 'dark') {
+        document.documentElement.removeAttribute('data-theme');
+        btnContrast.innerHTML = '<i class="fas fa-moon"></i> Modo Escuro';
+    } else {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        btnContrast.innerHTML = '<i class="fas fa-sun"></i> Modo Claro';
+    }
+});
+
+btnFontPlus.addEventListener('click', () => {
+    if (currentFontSize < 24) {
+        currentFontSize += 2;
+        document.documentElement.style.setProperty('--font-base', currentFontSize + 'px');
+    }
+});
+
+btnFontMinus.addEventListener('click', () => {
+    if (currentFontSize > 14) {
+        currentFontSize -= 2;
+        document.documentElement.style.setProperty('--font-base', currentFontSize + 'px');
+    }
+});
+
+// --- BOTÃO VOLTAR AO TOPO ---
+const btnTop = document.getElementById('btn-top');
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) {
+        btnTop.style.display = 'block';
+    } else {
+        btnTop.style.display = 'none';
+    }
+});
+btnTop.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+// --- PORTAL DE ESCUTA (SIMULAÇÃO) ---
+const frasesMotivacionais = [
+    "\"Você é forte, sua voz importa e você não está sozinha nessa jornada.\"",
+    "\"O respeito é a base de toda convivência justa. Não se cale.\"",
+    "\"Ninguém pode fazer você se sentir inferior sem o seu consentimento.\"",
+    "\"A coragem não é a ausência do medo, mas o triunfo sobre ele.\""
+];
+
+function processarDesabafo(event) {
+    event.preventDefault();
+    const nome = document.getElementById('nome-anonimo').value || 'Amigo(a)';
+    const feedback = document.getElementById('feedback-escuta');
+    
+    // Resposta automática simulada
+    feedback.innerHTML = `<strong>Obrigado pelo seu relato, ${nome}!</strong> <br> Queremos reforçar que você foi ouvido(a). Este ambiente é uma simulação segura e nenhum dado foi armazenado. Lembre-se sempre das orientações ao lado para buscar apoio real!`;
+    feedback.classList.remove('hidden');
+
+    // Troca a frase motivacional dinamicamente de forma aleatória
+    const indiceAleatorio = Math.floor(Math.random() * frasesMotivacionais.length);
+    document.getElementById('frase-motivacional').innerText = frasesMotivacionais[indiceAleatorio];
+
+    // Limpa o formulário
+    document.getElementById('form-escuta').reset();
 }
 
-[data-theme="dark"] {
-    --bg-color: #121212;
-    --text-color: #f8f9fa;
-    --card-bg: #1e1e1e;
-    --primary-color: #bb86fc;
-    --secondary-color: #2d2d2d;
-    --border-color: #444444;
+// --- QUIZ INTERATIVO (DADOS E LÓGICA) ---
+const perguntasQuiz = [
+    {
+        q: "1. Um colega de classe diz que 'futebol é apenas para meninos'. Esta atitude demonstra respeito?",
+        options: ["Sim, afinal existem esportes separados.", "Não, isso é uma prática machista que exclui as meninas.", "Tanto faz, é apenas uma opinião pessoal."],
+        correct: 1
+    },
+    {
+        q: "2. Dividir as tarefas domésticas igualmente entre homens e mulheres dentro de casa ajuda a combater o machismo?",
+        options: ["Sim, promove a igualdade de responsabilidades.", "Não, isso não altera a sociedade.", "Apenas se as mulheres pedirem ajuda."],
+        correct: 0
+    },
+    {
+        q: "3. Interromper constantemente uma colega ou professora enquanto ela fala (prática conhecida como manterrupting) é:",
+        options: ["Normal no ritmo de um debate dinâmico.", "Uma atitude aceitável dependendo do assunto.", "Uma manifestação sutil de machismo e desrespeito."],
+        correct: 2
+    },
+    {
+        q: "4. Ao presenciar um comentário machista disfarçado de 'piada' no grupo da escola, o que você faria?",
+        options: ["Ignoraria para não causar conflitos.", "Chamaria a atenção sobre o desrespeito e não compartilharia.", "Riria junto para fazer parte do grupo."],
+        correct: 1
+    },
+    {
+        q: "5. O machismo afeta negativamente apenas as mulheres?",
+        options: ["Sim, os homens só se beneficiam com ele.", "Não, ele também impõe pressões prejudiciais sobre os homens.", "Não, ele não afeta ninguém de verdade."],
+        correct: 1
+    }
+];
+
+function renderizarQuiz() {
+    const wrapper = document.getElementById('questions-wrapper');
+    wrapper.innerHTML = '';
+    perguntasQuiz.forEach((pergunta, indexPerg) => {
+        const divItem = document.createElement('div');
+        divItem.className = 'quiz-item';
+        
+        const titulo = document.createElement('h4');
+        titulo.innerText = pergunta.q;
+        divItem.appendChild(titulo);
+
+        const divOptions = document.createElement('div');
+        divOptions.className = 'quiz-options';
+
+        pergunta.options.forEach((opcao, indexOpcao) => {
+            const label = document.createElement('label');
+            label.innerHTML = `<input type="radio" name="pergunta${indexPerg}" value="${indexOpcao}"> ${opcao}`;
+            divOptions.appendChild(label);
+        });
+
+        divItem.appendChild(divOptions);
+        wrapper.appendChild(divItem);
+    });
 }
 
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    transition: background-color 0.3s ease, color 0.3s ease;
+function calcularQuiz() {
+    let acertos = 0;
+    let respondeuTodas = true;
+
+    perguntasQuiz.forEach((pergunta, indexPerg) => {
+        const selecionado = document.querySelector(`input[name="pergunta${indexPerg}"]:checked`);
+        if (selecionado) {
+            if (parseInt(selecionado.value) === pergunta.correct) {
+                acertos++;
+            }
+        } else {
+            respondeuTodas = false;
+        }
+    });
+
+    const resultadoDiv = document.getElementById('quiz-result');
+    resultadoDiv.classList.remove('hidden');
+
+    if (!respondeuTodas) {
+        resultadoDiv.style.color = "#856404";
+        resultadoDiv.innerText = `Você não respondeu todas as perguntas! Acertos computados até agora: ${acertos} de ${perguntasQuiz.length}.`;
+    } else {
+        resultadoDiv.style.color = varColorResult(acertos);
+        resultadoDiv.innerText = `Quiz Concluído! Você acertou ${acertos} de ${perguntasQuiz.length} perguntas.`;
+    }
 }
 
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: var(--font-base);
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    line-height: 1.6;
+function varColorResult(acertos) {
+    if (acertos >= 4) return "#155724"; // Verde para bom desempenho
+    if (acertos >= 2) return "#856404"; // Amarelo/Laranja
+    return "#721c24"; // Vermelho
 }
 
-/* Barra de Acessibilidade */
-.accessibility-bar {
-    background-color: var(--secondary-color);
-    padding: 8px 20px;
-    display: flex;
-    justify-content: flex-end;
-    gap: 15px;
-}
-.accessibility-bar button {
-    background: transparent;
-    border: 1px solid var(--border-color);
-    color: var(--text-color);
-    padding: 5px 10px;
-    cursor: pointer;
-    border-radius: 4px;
-    font-size: 0.9rem;
-}
+// Inicializa o quiz quando o script carrega
+renderizarQuiz();
 
-/* Cabeçalho e Nav */
-header {
-    background-color: var(--primary-color);
-    color: white;
-    padding: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-}
-header .logo {
-    font-size: 1.5rem;
-    font-weight: bold;
-}
-nav ul {
-    display: flex;
-    list-style: none;
-    gap: 20px;
-}
-nav ul li a {
-    color: rgba(255,255,255,0.8);
-    text-decoration: none;
-    font-weight: 600;
-    padding: 8px 12px;
-    border-radius: 4px;
-}
-nav ul li a.active, nav ul li a:hover {
-    color: white;
-    background-color: rgba(255,255,255,0.2);
-}
-
-/* Layout Geral */
-.container {
-    max-width: 1200px;
-    margin: 40px auto;
-    padding: 0 20px;
-    min-height: 70vh;
-}
-
-/* Animações e Controle de Abas */
-.tab-content {
-    display: none;
-}
-.active-tab {
-    display: block;
-}
-.fade-in {
-    animation: fadeIn 0.5s ease-in-out;
-}
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-/* Home Section */
-.hero {
-    text-align: center;
-    margin-bottom: 40px;
-}
-.welcome-msg {
-    font-size: 1.25rem;
-    font-style: italic;
-    color: var(--primary-color);
-    margin-top: 15px;
-}
-.carousel-container {
-    width: 100%;
-    border-radius: 12px;
-    overflow: hidden;
-    position: relative;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
-    margin-bottom: 40px;
-}
-.carousel-slide img {
-    width: 100%;
-    height: 400px;
-    object-fit: cover;
-    display: block;
-}
-.carousel-caption {
-    position: absolute;
-    bottom: 0;
-    background: rgba(0,0,0,0.6);
-    color: white;
-    width: 100%;
-    padding: 15px;
-    text-align: center;
-}
-.card-info {
-    background-color: var(--card-bg);
-    border: 1px solid var(--border-color);
-    padding: 25px;
-    border-radius: 8px;
-}
-
-/* Portal de Escuta */
-.escuta-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 30px;
-    margin-top: 20px;
-}
-@media (max-width: 768px) {
-    .escuta-grid { grid-template-columns: 1fr; }
-    header { flex-direction: column; gap: 15px; text-align: center; }
-}
-.form-group {
-    margin-bottom: 15px;
-}
-.form-group label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-}
-.form-group input, .form-group textarea {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid var(--border-color);
-    background-color: var(--card-bg);
-    color: var(--text-color);
-    border-radius: 6px;
-}
-.btn-submit {
-    background-color: var(--primary-color);
-    color: white;
-    border: none;
-    padding: 12px 20px;
-    cursor: pointer;
-    font-weight: bold;
-    border-radius: 6px;
-    width: 100%;
-}
-.btn-submit:hover { opacity: 0.9; }
-.hidden { display: none; }
-#feedback-escuta {
-    margin-top: 20px;
-    padding: 15px;
-    background-color: #d4edda;
-    color: #155724;
-    border-left: 5px solid var(--accent-color);
-    border-radius: 4px;
-}
-[data-theme="dark"] #feedback-escuta {
-    background-color: #1b4332;
-    color: #d4edda;
-}
-.motivation-box, .guidance-box {
-    background-color: var(--card-bg);
-    border: 1px solid var(--border-color);
-    padding: 20px;
-    border-radius: 8px;
-    margin-bottom: 20px;
-}
-.guidance-box ul { list-style-position: inside; margin-top: 10px; }
-.guidance-box li { margin-bottom: 8px; }
-
-/* Quiz Styles */
-.quiz-item {
-    background-color: var(--card-bg);
-    border: 1px solid var(--border-color);
-    padding: 20px;
-    border-radius: 8px;
-    margin-bottom: 15px;
-}
-.quiz-options label {
-    display: block;
-    padding: 8px;
-    background-color: var(--secondary-color);
-    margin-top: 5px;
-    border-radius: 4px;
-    cursor: pointer;
-}
-.quiz-options input { margin-right: 10px; }
-#quiz-result {
-    margin-top: 20px;
-    padding: 20px;
-    font-size: 1.2rem;
-    font-weight: bold;
-    text-align: center;
-    background-color: var(--secondary-color);
-    border-radius: 8px;
-}
-
-/* Referências */
-.ref-list li {
-    background-color: var(--card-bg);
-    border: 1px solid var(--border-color);
-    padding: 15px;
-    margin-bottom: 10px;
-    border-radius: 6px;
-    list-style: none;
-}
-.ref-list a { color: var(--primary-color); font-weight: bold; text-decoration: none; }
-.ref-list span { display: block; font-size: 0.9rem; opacity: 0.8; }
-
-/* Botão Topo e Footer */
-#btn-top {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background-color: var(--primary-color);
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 50%;
-    cursor: pointer;
-    display: none;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-}
-footer {
-    text-align: center;
-    padding: 20px;
-    background-color: var(--secondary-color);
-    border-top: 1px solid var(--border-color);
-    margin-top: 40px;
-}
