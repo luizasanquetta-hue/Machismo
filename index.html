@@ -1,333 +1,379 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portal Vozes da Igualdade — Consciência e Respeito</title>
-    <link rel="stylesheet" href="style.css">
-    <!-- Ícones FontAwesome para elementos visuais -->
-    <link rel="stylesheet" href="https://cloudflare.com">
-</head>
-<body>
+/* ==========================================================================
+   Tokens de Design: Minimalista, Sofisticado e Atemporal
+   ========================================================================== */
+:root {
+    --bg-main: #faf9f6;          /* Branco pérola / linho (remete a sofisticação) */
+    --bg-card: #ffffff;
+    --text-main: #1a161f;        /* Grafite profundo quase preto */
+    --text-muted: #6b6375;      /* Cinza acastanhado elegante */
+    --primary: #4a2874;          /* Roxo Real profundo e sóbrio */
+    --primary-light: #f3edf9;    /* Lavanda pastel sutil */
+    --accent: #0f766e;           /* Verde esmeralda escuro para contraste */
+    --border: rgba(74, 40, 116, 0.08); /* Linhas orgânicas e quase invisíveis */
+    --radius: 4px;               /* Cantos levemente facetados (mais formal/rebuscado) */
+    --font-scale: 16px;
+    --shadow-sm: 0 2px 8px rgba(74, 40, 116, 0.02);
+    --shadow-md: 0 10px 40px rgba(74, 40, 116, 0.04);
+}
 
-    <!-- Barra Superior de Acessibilidade -->
-    <div class="accessibility-bar" role="toolbar" aria-label="Ferramentas de acessibilidade">
-        <button id="btn-contrast" title="Alternar Modo Escuro"><i class="fas fa-moon"></i> Alto Contraste</button>
-        <button id="btn-font-plus" title="Aumentar Fonte"><i class="fas fa-plus"></i> <i class="fas fa-font"></i></button>
-        <button id="btn-font-minus" title="Diminuir Fonte"><i class="fas fa-minus"></i> <i class="fas fa-font"></i></button>
-    </div>
+/* Modo Alto Contraste / Noturno Luxo */
+[data-theme="dark"] {
+    --bg-main: #0b090e;
+    --bg-card: #131017;
+    --text-main: #f5f4f7;
+    --text-muted: #9c94a6;
+    --primary: #b08ee0;
+    --primary-light: #1f1829;
+    --accent: #2dd4bf;
+    --border: rgba(176, 142, 224, 0.1);
+    --shadow-md: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
 
-    <!-- Cabeçalho Principal -->
-    <header>
-        <div class="logo">
-            <i class="fas fa-feather-alt animate-pulse"></i> Vozes da Igualdade
-        </div>
-        <nav>
-            <ul>
-                <li><a href="#" class="nav-link active" data-target="home">Início</a></li>
-                <li><a href="#" class="nav-link" data-target="escuta">Portal de Escuta</a></li>
-                <li><a href="#" class="nav-link" data-target="quiz">Quiz Interativo</a></li>
-                <li><a href="#" class="nav-link" data-target="referencias">Referências</a></li>
-            </ul>
-        </nav>
-    </header>
+/* ==========================================================================
+   Reset e Tipografia Fina
+   ========================================================================== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    transition: background 0.4s ease, color 0.4s ease, border-color 0.4s ease, transform 0.3s ease;
+}
 
-    <!-- Conteúdo Dinâmico -->
-    <main class="container">
+body {
+    font-family: 'Georgia', serif; /* Serifado para títulos e corpo traz tom rebuscado */
+    font-size: var(--font-scale);
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    line-height: 1.8;
+    letter-spacing: 0.02em;
+    -webkit-font-smoothing: antialiased;
+}
 
-        <!-- SESSÃO 1: PÁGINA INICIAL -->
-        <section id="home" class="tab-content active-tab fade-in">
-            <div class="hero-section">
-                <h1>Portal de Apoio e Enfrentamento ao Machismo</h1>
-                <p class="welcome-msg">"Bem-vindo ao Portal Vozes da Igualdade. Aqui você encontrará informações, orientações e apoio sobre situações de desigualdade e machismo vivenciadas no ambiente escolar e no cotidiano."</p>
-            </div>
+/* Aplicando sans-serif apenas onde exige leitura técnica rápida */
+input, textarea, button, nav, .logo, .accessibility-bar, footer {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    letter-spacing: 0.05em;
+}
 
-            <!-- Carrossel de Imagens Funcional Nativo -->
-            <div class="carousel-container">
-                <div class="carousel-track">
-                    <div class="carousel-slide active">
-                        <img src="https://unsplash.com" alt="Grupo diversificado discutindo igualdade de direitos">
-                        <div class="carousel-caption">Promovendo a Igualdade de Gênero nas Escolas</div>
-                    </div>
-                    <div class="carousel-slide">
-                        <img src="https://unsplash.com" alt="Liderança feminina debatendo em ambiente corporativo">
-                        <div class="carousel-caption">Desconstruindo Papéis Tradicionais de Gênero</div>
-                    </div>
-                    <div class="carousel-slide">
-                        <img src="https://unsplash.com" alt="Estudantes em círculo conversando com empatia">
-                        <div class="carousel-caption">Construindo Espaços de Diálogo Seguros</div>
-                    </div>
-                </div>
-                <button class="carousel-btn prev" onclick="mudarSlide(-1)"><i class="fas fa-chevron-left"></i></button>
-                <button class="carousel-btn next" onclick="mudarSlide(1)"><i class="fas fa-chevron-right"></i></button>
-            </div>
+/* ==========================================================================
+   Componentes Globais (Layout Clean)
+   ========================================================================== */
+.container {
+    max-width: 960px; /* Reduzido para focar a leitura no centro */
+    margin: 60px auto;
+    padding: 0 30px;
+    min-height: 70vh;
+}
 
-            <!-- Grid de Introdução ao Tema -->
-            <div class="intro-grid">
-                <div class="intro-card">
-                    <i class="fas fa-shield-alt card-icon"></i>
-                    <h3>O que é Machismo Estrutural?</h3>
-                    <p>É o sistema de crenças e hábitos enraizados na cultura que posicionam o gênero masculino em privilégio ou superioridade, limitando a autonomia e o respeito direcionados às mulheres.</p>
-                </div>
-                <div class="intro-card">
-                    <i class="fas fa-school card-icon"></i>
-                    <h3>Impacto Escolar</h3>
-                    <p>Manifesta-se desde piadas depreciativas disfarçadas de humor até a exclusão de estudantes em atividades esportivas e acadêmicas baseadas puramente em estereótipos.</p>
-                </div>
-            </div>
-        </section>
+.card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 40px;
+    box-shadow: var(--shadow-md);
+    margin-bottom: 40px;
+}
 
-        <!-- SESSÃO 2: PORTAL DE ESCUTA -->
-        <section id="escuta" class="tab-content fade-in">
-            <div class="section-header">
-                <h2><i class="fas fa-comment-medical text-primary"></i> Portal de Escuta Activa</h2>
-                <p>Este ambiente é um espaço estritamente seguro e anônimo. Sinta-se livre para simular um desabafo ou relatar uma vivência. Suas respostas não serão gravadas no servidor.</p>
-            </div>
+h1, h2, h3, h4 {
+    font-weight: 400; /* Linhas finas transmitem elegância */
+    color: var(--primary);
+    line-height: 1.3;
+}
 
-            <div class="escuta-wrapper">
-                <!-- Formulário de Envio -->
-                <div class="card form-container">
-                    <form id="form-escuta" onsubmit="enviarDesabafo(event)">
-                        <div class="form-group">
-                            <label for="input-codinome">Codinome ou Pseudônimo (Opcional):</label>
-                            <input type="text" id="input-codinome" placeholder="Ex: Girassol, Pensador, Anônima...">
-                        </div>
-                        <div class="form-group">
-                            <label for="textarea-relato">Relate aqui a sua situação ou desabafo:</label>
-                            <textarea id="textarea-relato" rows="6" required placeholder="Digite seu desabafo com tranquilidade..."></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Encaminhar Relato Simulado</button>
-                    </form>
+/* ==========================================================================
+   Barra de Acessibilidade Minimalista
+   ========================================================================== */
+.accessibility-bar {
+    background-color: var(--bg-main);
+    padding: 10px 5%;
+    display: flex;
+    justify-content: flex-end;
+    gap: 20px;
+    border-bottom: 1px solid var(--border);
+}
 
-                    <!-- Mensagem Condicional JavaScript -->
-                    <div id="escuta-feedback" class="feedback-box hidden"></div>
-                </div>
+.accessibility-bar button {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    padding: 4px 8px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    font-weight: 500;
+}
 
-                <!-- Painel de Orientações e Apoio -->
-                <div class="support-panel">
-                    <div class="card text-center motivation-card">
-                        <i class="fas fa-quote-left quotes-icon"></i>
-                        <p id="txt-motivacional">"O primeiro passo para a mudança é romper o silêncio. Sua voz carrega poder e relevância."</p>
-                    </div>
+.accessibility-bar button:hover {
+    color: var(--primary);
+}
 
-                    <div class="card guidance-card">
-                        <h3><i class="fas fa-life-ring"></i> Onde buscar apoio real?</h3>
-                        <p>Situações reais exigem rede de apoio estruturada. Se você ou alguém que você conhece precisa de ajuda, procure imediatamente:</p>
-                        <ul class="guidance-list">
-                            <li><i class="fas fa-chalkboard-teacher"></i> <strong>Professores e Pedagogos:</strong> Apoio imediato na mediação escolar.</li>
-                            <li><i class="fas fa-user-friends"></i> <strong>Equipe de Direção ou Familiares:</strong> Adultos de sua estrita confiança.</li>
-                            <li><i class="fas fa-phone-alt"></i> <strong>Central de Atendimento (Ligue 180):</strong> Canal gratuito e confidencial de denúncias e orientações.</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
+/* ==========================================================================
+   Header e Menu Arquitetônico
+   ========================================================================== */
+header {
+    background-color: var(--bg-card);
+    border-bottom: 1px solid var(--border);
+    padding: 30px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
 
-        <!-- SESSÃO 3: QUIZ INTERATIVO -->
-        <section id="quiz" class="tab-content fade-in">
-            <div class="section-header">
-                <h2><i class="fas fa-tasks text-primary"></i> Desafio de Consciência Coletiva</h2>
-                <p>Responda às 5 situações cotidianas abaixo para avaliar as suas percepções práticas sobre igualdade de direitos e respeito mútuo.</p>
-            </div>
+header .logo {
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: var(--text-main);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
 
-            <div id="quiz-block" class="card">
-                <div id="quiz-questions"></div>
-                <button onclick="avaliarQuiz()" class="btn btn-accent btn-wide">Validar e Computar Respostas</button>
-                <div id="quiz-summary" class="result-box hidden"></div>
-            </div>
-        </section>
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
 
-        <!-- SESSÃO 4: REFERÊNCIAS -->
-        <section id="referencias" class="tab-content fade-in">
-            <div class="section-header">
-                <h2><i class="fas fa-bookmark text-primary"></i> Acervo Institucional e Fontes de Pesquisa</h2>
-                <p>Garantimos a integridade de nossas informações baseando toda a curadoria em canais técnicos, acadêmicos e governamentais oficiais:</p>
-            </div>
+nav ul li a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    padding-bottom: 6px;
+    border-bottom: 2px solid transparent;
+}
 
-            <div class="references-list">
-                <div class="ref-card">
-                    <div class="ref-icon"><i class="fas fa-university"></i></div>
-                    <div class="ref-body">
-                        <h4><a href="https://www.gov.br" target="_blank">Ministério das Mulheres — Governo Federal do Brasil</a></h4>
-                        <p>Políticas públicas estruturais, dados estatísticos atualizados e cartilhas normativas sobre o enfrentamento da violência e discriminação baseada em gênero.</p>
-                    </div>
-                </div>
+nav ul li a:hover, nav ul li a.active {
+    color: var(--primary);
+    border-bottom: 2px solid var(--primary);
+}
 
-                <div class="ref-card">
-                    <div class="ref-icon"><i class="fas fa-globe-americas"></i></div>
-                    <div class="ref-body">
-                        <h4><a href="https://onumulheres.org.br" target="_blank">ONU Mulheres Brasil</a></h4>
-                        <p>Princípios de empoderamento, estudos globais sobre igualdade de condições laborais, pedagógicas e combate ao assédio.</p>
-                    </div>
-                </div>
+/* ==========================================================================
+   Abas e Animações Invisíveis
+   ========================================================================== */
+.tab-content { display: none; }
+.active-tab { display: block; }
 
-                <div class="ref-card">
-                    <div class="ref-icon"><i class="fas fa-child"></i></div>
-                    <div class="ref-body">
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portal Vozes da Igualdade — Consciência e Respeito</title>
-    <link rel="stylesheet" href="style.css">
-    <!-- Ícones FontAwesome para elementos visuais -->
-    <link rel="stylesheet" href="https://cloudflare.com">
-</head>
-<body>
+.fade-in {
+    animation: delicateFade 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+@keyframes delicateFade {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
 
-    <!-- Barra Superior de Acessibilidade -->
-    <div class="accessibility-bar" role="toolbar" aria-label="Ferramentas de acessibilidade">
-        <button id="btn-contrast" title="Alternar Modo Escuro"><i class="fas fa-moon"></i> Alto Contraste</button>
-        <button id="btn-font-plus" title="Aumentar Fonte"><i class="fas fa-plus"></i> <i class="fas fa-font"></i></button>
-        <button id="btn-font-minus" title="Diminuir Fonte"><i class="fas fa-minus"></i> <i class="fas fa-font"></i></button>
-    </div>
+/* ==========================================================================
+   Sessão Inicial (Hero & Galeria)
+   ========================================================================== */
+.hero-section {
+    text-align: center;
+    margin-bottom: 60px;
+}
 
-    <!-- Cabeçalho Principal -->
-    <header>
-        <div class="logo">
-            <i class="fas fa-feather-alt animate-pulse"></i> Vozes da Igualdade
-        </div>
-        <nav>
-            <ul>
-                <li><a href="#" class="nav-link active" data-target="home">Início</a></li>
-                <li><a href="#" class="nav-link" data-target="escuta">Portal de Escuta</a></li>
-                <li><a href="#" class="nav-link" data-target="quiz">Quiz Interativo</a></li>
-                <li><a href="#" class="nav-link" data-target="referencias">Referências</a></li>
-            </ul>
-        </nav>
-    </header>
+.hero-section h1 {
+    font-size: 2.6rem;
+    margin-bottom: 20px;
+}
 
-    <!-- Conteúdo Dinâmico -->
-    <main class="container">
+.welcome-msg {
+    font-size: 1.25rem;
+    color: var(--text-muted);
+    max-width: 750px;
+    margin: 0 auto;
+    line-height: 2;
+}
 
-        <!-- SESSÃO 1: PÁGINA INICIAL -->
-        <section id="home" class="tab-content active-tab fade-in">
-            <div class="hero-section">
-                <h1>Portal de Apoio e Enfrentamento ao Machismo</h1>
-                <p class="welcome-msg">"Bem-vindo ao Portal Vozes da Igualdade. Aqui você encontrará informações, orientações e apoio sobre situações de desigualdade e machismo vivenciadas no ambiente escolar e no cotidiano."</p>
-            </div>
+/* Carrossel Fino e Avançado */
+.carousel-container {
+    position: relative;
+    width: 100%;
+    height: 480px;
+    border-radius: var(--radius);
+    overflow: hidden;
+    margin-bottom: 60px;
+    box-shadow: var(--shadow-md);
+}
 
-            <!-- Carrossel de Imagens Funcional Nativo -->
-            <div class="carousel-container">
-                <div class="carousel-track">
-                    <div class="carousel-slide active">
-                        <img src="https://unsplash.com" alt="Grupo diversificado discutindo igualdade de direitos">
-                        <div class="carousel-caption">Promovendo a Igualdade de Gênero nas Escolas</div>
-                    </div>
-                    <div class="carousel-slide">
-                        <img src="https://unsplash.com" alt="Liderança feminina debatendo em ambiente corporativo">
-                        <div class="carousel-caption">Desconstruindo Papéis Tradicionais de Gênero</div>
-                    </div>
-                    <div class="carousel-slide">
-                        <img src="https://unsplash.com" alt="Estudantes em círculo conversando com empatia">
-                        <div class="carousel-caption">Construindo Espaços de Diálogo Seguros</div>
-                    </div>
-                </div>
-                <button class="carousel-btn prev" onclick="mudarSlide(-1)"><i class="fas fa-chevron-left"></i></button>
-                <button class="carousel-btn next" onclick="mudarSlide(1)"><i class="fas fa-chevron-right"></i></button>
-            </div>
+.carousel-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(20%) sepia(10%); /* Filtro de fotografia editorial */
+}
 
-            <!-- Grid de Introdução ao Tema -->
-            <div class="intro-grid">
-                <div class="intro-card">
-                    <i class="fas fa-shield-alt card-icon"></i>
-                    <h3>O que é Machismo Estrutural?</h3>
-                    <p>É o sistema de crenças e hábitos enraizados na cultura que posicionam o gênero masculino em privilégio ou superioridade, limitando a autonomia e o respeito direcionados às mulheres.</p>
-                </div>
-                <div class="intro-card">
-                    <i class="fas fa-school card-icon"></i>
-                    <h3>Impacto Escolar</h3>
-                    <p>Manifesta-se desde piadas depreciativas disfarçadas de humor até a exclusão de estudantes em atividades esportivas e acadêmicas baseadas puramente em estereótipos.</p>
-                </div>
-            </div>
-        </section>
+.carousel-caption {
+    position: absolute;
+    bottom: 40px;
+    left: 40px;
+    right: 40px;
+    background: rgba(255, 255, 255, 0.92);
+    color: #1a161f;
+    padding: 20px 30px;
+    border-radius: var(--radius);
+    font-size: 1.1rem;
+    font-style: italic;
+    box-shadow: var(--shadow-sm);
+    max-width: 500px;
+    margin: 0 auto;
+}
 
-        <!-- SESSÃO 2: PORTAL DE ESCUTA -->
-        <section id="escuta" class="tab-content fade-in">
-            <div class="section-header">
-                <h2><i class="fas fa-comment-medical text-primary"></i> Portal de Escuta Activa</h2>
-                <p>Este ambiente é um espaço estritamente seguro e anônimo. Sinta-se livre para simular um desabafo ou relatar uma vivência. Suas respostas não serão gravadas no servidor.</p>
-            </div>
+[data-theme="dark"] .carousel-caption {
+    background: rgba(19, 16, 23, 0.92);
+    color: #f5f4f7;
+}
 
-            <div class="escuta-wrapper">
-                <!-- Formulário de Envio -->
-                <div class="card form-container">
-                    <form id="form-escuta" onsubmit="enviarDesabafo(event)">
-                        <div class="form-group">
-                            <label for="input-codinome">Codinome ou Pseudônimo (Opcional):</label>
-                            <input type="text" id="input-codinome" placeholder="Ex: Girassol, Pensador, Anônima...">
-                        </div>
-                        <div class="form-group">
-                            <label for="textarea-relato">Relate aqui a sua situação ou desabafo:</label>
-                            <textarea id="textarea-relato" rows="6" required placeholder="Digite seu desabafo com tranquilidade..."></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Encaminhar Relato Simulado</button>
-                    </form>
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.4);
+    color: white;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.carousel-btn:hover { background: rgba(255,255,255,0.2); }
 
-                    <!-- Mensagem Condicional JavaScript -->
-                    <div id="escuta-feedback" class="feedback-box hidden"></div>
-                </div>
+/* Bloco Informativo de Entrada */
+.intro-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+}
 
-                <!-- Painel de Orientações e Apoio -->
-                <div class="support-panel">
-                    <div class="card text-center motivation-card">
-                        <i class="fas fa-quote-left quotes-icon"></i>
-                        <p id="txt-motivacional">"O primeiro passo para a mudança é romper o silêncio. Sua voz carrega poder e relevância."</p>
-                    </div>
+.intro-card {
+    background: transparent;
+    border-top: 1px solid var(--border); /* Apenas uma linha superior substitui caixas pesadas */
+    padding-top: 25px;
+}
 
-                    <div class="card guidance-card">
-                        <h3><i class="fas fa-life-ring"></i> Onde buscar apoio real?</h3>
-                        <p>Situações reais exigem rede de apoio estruturada. Se você ou alguém que você conhece precisa de ajuda, procure imediatamente:</p>
-                        <ul class="guidance-list">
-                            <li><i class="fas fa-chalkboard-teacher"></i> <strong>Professores e Pedagogos:</strong> Apoio imediato na mediação escolar.</li>
-                            <li><i class="fas fa-user-friends"></i> <strong>Equipe de Direção ou Familiares:</strong> Adultos de sua estrita confiança.</li>
-                            <li><i class="fas fa-phone-alt"></i> <strong>Central de Atendimento (Ligue 180):</strong> Canal gratuito e confidencial de denúncias e orientações.</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
+.intro-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 12px;
+}
 
-        <!-- SESSÃO 3: QUIZ INTERATIVO -->
-        <section id="quiz" class="tab-content fade-in">
-            <div class="section-header">
-                <h2><i class="fas fa-tasks text-primary"></i> Desafio de Consciência Coletiva</h2>
-                <p>Responda às 5 situações cotidianas abaixo para avaliar as suas percepções práticas sobre igualdade de direitos e respeito mútuo.</p>
-            </div>
+.card-icon { display: none; } /* Remoção de ícones excessivos para limpar o design */
 
-            <div id="quiz-block" class="card">
-                <div id="quiz-questions"></div>
-                <button onclick="avaliarQuiz()" class="btn btn-accent btn-wide">Validar e Computar Respostas</button>
-                <div id="quiz-summary" class="result-box hidden"></div>
-            </div>
-        </section>
+/* ==========================================================================
+   Portal de Escuta (Formulários Flutuantes)
+   ========================================================================== */
+.section-header {
+    margin-bottom: 45px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 20px;
+}
 
-        <!-- SESSÃO 4: REFERÊNCIAS -->
-        <section id="referencias" class="tab-content fade-in">
-            <div class="section-header">
-                <h2><i class="fas fa-bookmark text-primary"></i> Acervo Institucional e Fontes de Pesquisa</h2>
-                <p>Garantimos a integridade de nossas informações baseando toda a curadoria em canais técnicos, acadêmicos e governamentais oficiais:</p>
-            </div>
+.section-header h2 { font-size: 2rem; }
+.section-header p { color: var(--text-muted); margin-top: 5px; }
 
-            <div class="references-list">
-                <div class="ref-card">
-                    <div class="ref-icon"><i class="fas fa-university"></i></div>
-                    <div class="ref-body">
-                        <h4><a href="https://www.gov.br" target="_blank">Ministério das Mulheres — Governo Federal do Brasil</a></h4>
-                        <p>Políticas públicas estruturais, dados estatísticos atualizados e cartilhas normativas sobre o enfrentamento da violência e discriminação baseada em gênero.</p>
-                    </div>
-                </div>
+.escuta-wrapper {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 50px;
+}
 
-                <div class="ref-card">
-                    <div class="ref-icon"><i class="fas fa-globe-americas"></i></div>
-                    <div class="ref-body">
-                        <h4><a href="https://onumulheres.org.br" target="_blank">ONU Mulheres Brasil</a></h4>
-                        <p>Princípios de empoderamento, estudos globais sobre igualdade de condições laborais, pedagógicas e combate ao assédio.</p>
-                    </div>
-                </div>
+.form-group { margin-bottom: 25px; }
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--text-muted);
+}
 
-                <div class="ref-card">
-                    <div class="ref-icon"><i class="fas fa-child"></i></div>
-                    <div class="ref-body">
+.form-group input, .form-group textarea {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-bottom: 1px solid var(--border); /* Apenas linha inferior estilo clássico */
+    background: transparent;
+    color: var(--text-main);
+    font-size: 1rem;
+    border-radius: 0;
+}
+
+.form-group input:focus, .form-group textarea:focus {
+    outline: none;
+    border-bottom-color: var(--primary);
+}
+
+/* Botões de Alfaiataria (Clean & Linhas Retas) */
+.btn {
+    border: 1px solid var(--primary);
+    padding: 14px 28px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    cursor: pointer;
+    background: transparent;
+    color: var(--primary);
+    border-radius: var(--radius);
+}
+
+.btn-primary:hover {
+    background: var(--primary);
+    color: #ffffff;
+}
+
+.btn-accent {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+.btn-accent:hover {
+    background: var(--accent);
+    color: #ffffff;
+}
+
+.btn-wide { width: 100%; }
+
+.feedback-box {
+    margin-top: 25px;
+    padding: 20px;
+    border-left: 2px solid var(--primary);
+    font-style: italic;
+    background: var(--primary-light);
+}
+
+/* Painel de Suporte Lateral */
+.motivation-card {
+    background: var(--primary-light) !important;
+    color: var(--primary) !important;
+    border: none;
+}
+
+.quotes-icon { display: none; }
+
+.guidance-card h3 { font-size: 1.3rem; margin-bottom: 15px; }
+
+.guidance-list { list-style: none; }
+.guidance-list li {
+    margin-bottom: 20px;
+    font-size: 0.95rem;
+    color: var(--text-muted);
+}
+.guidance-list li strong { color: var(--text-main); }
+.guidance-list li i { color: var(--primary); margin-right: 8px; }
+
+/* ==========================================================================
+   Quiz Interativo de Alta Costura
+   ========================================================================== */
+.quiz-block-item {
+    margin-bottom: 35px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid var(--border);
+}
+
 
