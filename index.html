@@ -3,24 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portal Vozes da Igualdade — Consciência e Respeito</title>
+    <title>Vozes da Igualdade — Perspectivas e Diálogo</title>
     <link rel="stylesheet" href="style.css">
-    <!-- Biblioteca de ícones elegantes FontAwesome -->
     <link rel="stylesheet" href="https://cloudflare.com">
 </head>
 <body>
 
-    <!-- Barra de Ferramentas de Acessibilidade Minimalista -->
-    <div class="accessibility-bar" role="toolbar" aria-label="Ferramentas de acessibilidade">
-        <button id="btn-contrast" title="Alternar Modo Escuro"><i class="fas fa-moon"></i> Alto Contraste</button>
-        <button id="btn-font-plus" title="Aumentar Fonte"><i class="fas fa-plus"></i> <i class="fas fa-font"></i></button>
-        <button id="btn-font-minus" title="Diminuir Fonte"><i class="fas fa-minus"></i> <i class="fas fa-font"></i></button>
+    <!-- Acessibilidade Arquitetônica -->
+    <div class="accessibility-bar" role="toolbar" aria-label="Acessibilidade">
+        <button id="btn-contrast" title="Alternar Contraste"><i class="fas fa-adjust"></i> Modo Escuro</button>
+        <button id="btn-font-plus" title="Aumentar Texto"><i class="fas fa-text-height"></i> Aumentar</button>
+        <button id="btn-font-minus" title="Diminuir Texto">Diminuir</button>
     </div>
 
-    <!-- Cabeçalho Arquitetônico -->
+    <!-- Cabeçalho Minimalista -->
     <header>
         <div class="logo">
-            <i class="fas fa-feather-alt"></i> Vozes da Igualdade
+            <span>Vozes da Igualdade</span>
         </div>
         <nav>
             <ul>
@@ -32,7 +31,7 @@
         </nav>
     </header>
 
-    <!-- Conteúdo Centralizado do Portal -->
+    <!-- Área Principal de Conteúdo -->
     <main class="container">
 
         <!-- 1. PÁGINA INICIAL -->
@@ -42,35 +41,35 @@
                 <p class="welcome-msg">"Bem-vindo ao Portal Vozes da Igualdade. Aqui você encontrará informações, orientações e apoio sobre situações de desigualdade e machismo vivenciadas no ambiente escolar e no cotidiano."</p>
             </div>
 
-            <!-- Carrossel de Imagens Editorial com Controles Nativos -->
+            <!-- Galeria / Carrossel Editorial Nativamente Funcional -->
             <div class="carousel-container">
                 <div class="carousel-track">
                     <div class="carousel-slide active">
-                        <img src="https://unsplash.com" alt="Grupo diversificado discutindo igualdade de direitos">
+                        <img src="https://unsplash.com" alt="Diálogo e igualdade">
                         <div class="carousel-caption">Promovendo a Igualdade de Gênero nas Escolas</div>
                     </div>
                     <div class="carousel-slide">
-                        <img src="https://unsplash.com" alt="Liderança feminina debatendo em ambiente corporativo">
+                        <img src="https://unsplash.com" alt="Liderança feminina">
                         <div class="carousel-caption">Desconstruindo Papéis Tradicionais de Gênero</div>
                     </div>
                     <div class="carousel-slide">
-                        <img src="https://unsplash.com" alt="Estudantes em círculo conversando com empatia">
+                        <img src="https://unsplash.com" alt="Espaços de diálogo">
                         <div class="carousel-caption">Construindo Espaços de Diálogo Seguros</div>
                     </div>
                 </div>
-                <button class="carousel-btn prev" onclick="mudarSlide(-1)"><i class="fas fa-chevron-left"></i></button>
-                <button class="carousel-btn next" onclick="mudarSlide(1)"><i class="fas fa-chevron-right"></i></button>
+                <button class="carousel-btn prev" onclick="mudarSlide(-1)"><i class="fas fa-arrow-left"></i></button>
+                <button class="carousel-btn next" onclick="mudarSlide(1)"><i class="fas fa-arrow-right"></i></button>
             </div>
 
-            <!-- Grid de Introdução Sóbria -->
+            <!-- Artigos Curtos Introdutórios -->
             <div class="intro-grid">
                 <div class="intro-card">
                     <h3>O que é Machismo Estrutural?</h3>
-                    <p>É o sistema de crenças e hábitos profundamente enraizados na nossa cultura que posicionam o gênero masculino em uma situação de privilégio ou superioridade artificial, limitando historicamente a autonomia e o respeito direcionados às mulheres.</p>
+                    <p>É um arranjo silencioso de hábitos, linguagens e dinâmicas inconscientes que perpetuam a assimetria entre gêneros. Desconstruir esse sistema no cotidiano é fundamental para resgatar a equidade intelectual e social.</p>
                 </div>
                 <div class="intro-card">
                     <h3>Impacto no Ambiente Escolar</h3>
-                    <p>Manifesta-se desde piadas depreciativas disfarçadas de humor cotidiano até a exclusão de estudantes de atividades esportivas, acadêmicas ou de liderança, baseando-se puramente em estereótipos ultrapassados de gênero.</p>
+                    <p>Manifesta-se de maneiras sutis, como piadas depreciativas camufladas de humor ou a segregação de tarefas e áreas de estudo. Identificar essas barreiras garante um ecossistema seguro e livre para o desenvolvimento coletivo.</p>
                 </div>
             </div>
         </section>
@@ -79,41 +78,36 @@
         <section id="escuta" class="tab-content fade-in">
             <div class="section-header">
                 <h2>Portal de Escuta Ativa</h2>
-                <p>Este ambiente é um espaço estritamente seguro e anônimo. Sinta-se livre para simular um desabafo ou relatar uma vivência. Suas respostas não serão salvas em nenhum servidor externo.</p>
+                <p>Um refúgio para expressão e acolhimento. Este ambiente simula um canal de diálogo confidencial. Seus registros são efêmeros e não serão armazenados em bancos de dados.</p>
             </div>
 
             <div class="escuta-wrapper">
-                <!-- Formulário Técnico de Envio -->
                 <div class="card form-container">
                     <form id="form-escuta" onsubmit="enviarDesabafo(event)">
                         <div class="form-group">
-                            <label for="input-codinome">Codinome ou Pseudônimo (Opcional):</label>
-                            <input type="text" id="input-codinome" placeholder="Ex: Girassol, Pensador, Anônima...">
+                            <label for="input-codinome">Assinatura / Codinome (Opcional)</label>
+                            <input type="text" id="input-codinome" placeholder="Ex: Anônimo, Íris, Girassol...">
                         </div>
                         <div class="form-group">
-                            <label for="textarea-relato">Relate aqui a sua situação ou desabafo:</label>
-                            <textarea id="textarea-relato" rows="6" required placeholder="Digite seu desabafo com tranquilidade..."></textarea>
+                            <label for="textarea-relato">O seu relato ou reflexão</label>
+                            <textarea id="textarea-relato" rows="5" required placeholder="Sinta-se confortável para escrever..."></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary">Encaminhar Relato Simulado</button>
+                        <button type="submit" class="btn btn-primary">Submeter Relato Simulado</button>
                     </form>
-
-                    <!-- Mensagem de Feedback Condicional via JavaScript -->
                     <div id="escuta-feedback" class="feedback-box hidden"></div>
                 </div>
 
-                <!-- Painel de Orientações e Apoio Emocional -->
                 <div class="support-panel">
                     <div class="card motivation-card">
                         <p id="txt-motivacional">"O primeiro passo para a mudança é romper o silêncio. Sua voz carrega poder, relevância e direito ao espaço."</p>
                     </div>
-
                     <div class="card guidance-card">
-                        <h3>Onde buscar apoio real?</h3>
-                        <p>Situações reais exigem redes de apoio estruturadas. Se você ou alguém que você conhece precisa de acolhimento ou orientação especializada, procure imediatamente:</p>
+                        <h3>Canais de Apoio Efetivo</h3>
+                        <p>A conscientização acadêmica caminha lado a lado com redes de suporte oficiais. Em cenários reais de vulnerabilidade, acione imediatamente:</p>
                         <ul class="guidance-list">
-                            <li><i class="fas fa-chalkboard-teacher"></i> <strong>Professores e Pedagogos:</strong> Apoio imediato na mediação e acolhimento escolar.</li>
-                            <li><i class="fas fa-user-friends"></i> <strong>Equipe de Direção ou Familiares:</strong> Adultos da sua estrita confiança.</li>
-                            <li><i class="fas fa-phone-alt"></i> <strong>Central de Atendimento (Ligue 180):</strong> Canal nacional gratuito e 100% confidencial de denúncias e orientações para mulheres.</li>
+                            <li><i class="fas fa-minus"></i> <strong>Corpo Pedagógico:</strong> Professores, orientadores e tutores da sua instituição escolar.</li>
+                            <li><i class="fas fa-minus"></i> <strong>Lideranças de Confiança:</strong> Familiares e responsáveis aptos a acolher sua demanda.</li>
+                            <li><i class="fas fa-minus"></i> <strong>Central Nacional de Apoio:</strong> Disque 180 para acolhimento e denúncias confidenciais de gênero.</li>
                         </ul>
                     </div>
                 </div>
@@ -123,14 +117,13 @@
         <!-- 3. QUIZ INTERATIVO -->
         <section id="quiz" class="tab-content fade-in">
             <div class="section-header">
-                <h2>Desafio de Consciência Coletiva</h2>
-                <p>Responda às 5 situações cotidianas abaixo para avaliar as suas percepções práticas sobre igualdade de direitos, empatia e respeito mútuo.</p>
+                <h2>Estudo de Casos Práticos</h2>
+                <p>Analise criticamente as interações propostas abaixo e avalie o seu entendimento acerca de dinâmicas institucionais, respeito e equidade de gênero.</p>
             </div>
 
-            <div id="quiz-block" class="card">
-                <!-- Perguntas injetadas e gerenciadas de forma limpa pelo JavaScript -->
+            <div id="quiz-block">
                 <div id="quiz-questions"></div>
-                <button onclick="avaliarQuiz()" class="btn btn-accent btn-wide">Validar e Computar Respostas</button>
+                <button onclick="avaliarQuiz()" class="btn btn-accent btn-wide">Processar Diagnóstico</button>
                 <div id="quiz-summary" class="result-box hidden"></div>
             </div>
         </section>
@@ -138,418 +131,41 @@
         <!-- 4. PÁGINA DE REFERÊNCIAS -->
         <section id="referencias" class="tab-content fade-in">
             <div class="section-header">
-                <h2>Acervo Institucional e Fontes de Pesquisa</h2>
-                <p>Garantimos a integridade de nossas informações baseando toda a curadoria em canais técnicos, acadêmicos e governamentais oficiais:</p>
+                <h2>Acervo Bibliográfico</h2>
+                <p>Nossos pilares informativos apoiam-se exclusivamente em diretrizes oficiais e canais técnicos chancelados pela comunidade científica e de direitos humanos:</p>
             </div>
 
             <div class="references-list">
                 <div class="ref-card">
-                    <div class="ref-body">
-                        <h4><a href="https://www.gov.br" target="_blank">Ministério das Mulheres — Governo Federal do Brasil</a></h4>
-                        <p>Políticas públicas estruturais, dados estatísticos atualizados e cartilhas normativas sobre o enfrentamento da violência e discriminação baseada em gênero.</p>
-                    </div>
+                    <h4><a href="https://www.gov.br" target="_blank">Ministério das Mulheres — Governo Federal do Brasil</a></h4>
+                    <p>Políticas de enfrentamento à violência estrutural e dados estatísticos consolidados sobre vulnerabilidades de gênero no território nacional.</p>
                 </div>
-
                 <div class="ref-card">
-                    <div class="ref-body">
-                        <h4><a href="https://onumulheres.org.br" target="_blank">ONU Mulheres Brasil</a></h4>
-                        <p>Princípios de empoderamento global, estudos acadêmicos sobre igualdade de condições laborais, pedagógicas e combate ativo ao assédio.</p>
-                    </div>
+                    <h4><a href="https://onumulheres.org.br" target="_blank">ONU Mulheres Brasil</a></h4>
+                    <p>Tratados internacionais, guias para o empoderamento feminino e relatórios técnicos sobre equidade no ambiente de ensino e trabalho.</p>
                 </div>
-
                 <div class="ref-card">
-                    <div class="ref-body">
-                        <h4><a href="https://unicef.org" target="_blank">UNICEF Brasil — Fundo das Nações Unidas para a Infância</a></h4>
-idade Visual Premium (`style.css`)
+                    <h4><a href="https://unicef.org" target="_blank">UNICEF Brasil — Fundo das Nações Unidas</a></h4>
+                    <p>Estratégias pedagógicas contra o bullying, o preconceito e o machismo sistemático direcionadas ao ambiente escolar e de desenvolvimento juvenil.</p>
+                </div>
+                <div class="ref-card">
+                    <h4><a href="https://fiocruz.br" target="_blank">Fundação Oswaldo Cruz (Fiocruz)</a></h4>
+                    <p>Artigos de saúde pública correlacionando os efeitos nocivos do assédio psicológico estrutural ao bem-estar e integridade mental das estudantes.</p>
+                </div>
+            </div>
+        </section>
 
-```css
-/* ==========================================================================
-   Tokens de Design: Minimalista, Sofisticado e Atemporal
-   ========================================================================== */
-:root {
-    --bg-main: #faf9f6;          /* Branco pérola / linho (remete a sofisticação) */
-    --bg-card: #ffffff;
-    --text-main: #1a161f;        /* Grafite profundo quase preto */
-    --text-muted: #6b6375;      /* Cinza acastanhado elegante */
-    --primary: #4a2874;          /* Roxo Real profundo e sóbrio */
-    --primary-light: #f3edf9;    /* Lavanda pastel sutil */
-    --accent: #0f766e;           /* Verde esmeralda escuro para contraste */
-    --border: rgba(74, 40, 116, 0.08); /* Linhas orgânicas e quase invisíveis */
-    --radius: 4px;               /* Cantos levemente facetados (mais formal/rebuscado) */
-    --font-scale: 16px;
-    --shadow-sm: 0 2px 8px rgba(74, 40, 116, 0.02);
-    --shadow-md: 0 10px 40px rgba(74, 40, 116, 0.04);
-}
+    </main>
 
-/* Modo Alto Contraste / Noturno Luxo */
-[data-theme="dark"] {
-    --bg-main: #0b090e;
-    --bg-card: #131017;
-    --text-main: #f5f4f7;
-    --text-muted: #9c94a6;
-    --primary: #b08ee0;
-    --primary-light: #1f1829;
-    --accent: #2dd4bf;
-    --border: rgba(176, 142, 224, 0.1);
-    --shadow-md: 0 10px 40px rgba(0, 0, 0, 0.3);
-}
+    <!-- Botão Flutuante de Retorno -->
+    <button id="scroll-to-top" title="Retornar ao topo"><i class="fas fa-arrow-up"></i></button>
 
-/* ==========================================================================
-   Reset e Tipografia Fina
-   ========================================================================== */
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    transition: background 0.4s ease, color 0.4s ease, border-color 0.4s ease, transform 0.3s ease;
-}
+    <footer>
+        <p>&copy; 2026 Vozes da Igualdade. Desenvolvido para fins estritamente pedagógicos e analíticos.</p>
+    </footer>
 
-body {
-    font-family: 'Georgia', serif; /* Serifado para títulos e corpo traz tom rebuscado */
-    font-size: var(--font-scale);
-    background-color: var(--bg-main);
-    color: var(--text-main);
-    line-height: 1.8;
-    letter-spacing: 0.02em;
-    -webkit-font-smoothing: antialiased;
-}
+    <script src="script.js"></script>
+</body>
+</html>
 
-/* Aplicando sans-serif apenas onde exige leitura técnica rápida */
-input, textarea, button, nav, .logo, .accessibility-bar, footer {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    letter-spacing: 0.05em;
-}
 
-/* ==========================================================================
-   Componentes Globais (Layout Clean)
-   ========================================================================== */
-.container {
-    max-width: 960px; /* Reduzido para focar a leitura no centro */
-    margin: 60px auto;
-    padding: 0 30px;
-    min-height: 70vh;
-}
-
-.card {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 40px;
-    box-shadow: var(--shadow-md);
-    margin-bottom: 40px;
-}
-
-h1, h2, h3, h4 {
-    font-weight: 400; /* Linhas finas transmitem elegância */
-    color: var(--primary);
-    line-height: 1.3;
-}
-
-/* ==========================================================================
-   Barra de Acessibilidade Minimalista
-   ========================================================================== */
-.accessibility-bar {
-    background-color: var(--bg-main);
-    padding: 10px 5%;
-    display: flex;
-    justify-content: flex-end;
-    gap: 20px;
-    border-bottom: 1px solid var(--border);
-}
-
-.accessibility-bar button {
-    background: transparent;
-    border: none;
-    color: var(--text-muted);
-    padding: 4px 8px;
-    cursor: pointer;
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    font-weight: 500;
-}
-
-.accessibility-bar button:hover {
-    color: var(--primary);
-}
-
-/* ==========================================================================
-   Header e Menu Arquitetônico
-   ========================================================================== */
-header {
-    background-color: var(--bg-card);
-    border-bottom: 1px solid var(--border);
-    padding: 30px 5%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-}
-
-header .logo {
-    font-size: 1.1rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    color: var(--text-main);
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-nav ul {
-    display: flex;
-    list-style: none;
-    gap: 30px;
-}
-
-nav ul li a {
-    color: var(--text-muted);
-    text-decoration: none;
-    font-size: 0.85rem;
-    font-weight: 500;
-    text-transform: uppercase;
-    padding-bottom: 6px;
-    border-bottom: 2px solid transparent;
-}
-
-nav ul li a:hover, nav ul li a.active {
-    color: var(--primary);
-    border-bottom: 2px solid var(--primary);
-}
-
-/* ==========================================================================
-   Abas e Animações Invisíveis
-   ========================================================================== */
-.tab-content { display: none; }
-.active-tab { display: block; }
-
-.fade-in {
-    animation: delicateFade 0.8s cubic-bezier(0.25, 1, 0.5, 1);
-}
-@keyframes delicateFade {
-    from { opacity: 0; transform: translateY(8px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-/* ==========================================================================
-   Sessão Inicial (Hero & Galeria)
-   ========================================================================== */
-.hero-section {
-    text-align: center;
-    margin-bottom: 60px;
-}
-
-.hero-section h1 {
-    font-size: 2.6rem;
-    margin-bottom: 20px;
-}
-
-.welcome-msg {
-    font-size: 1.25rem;
-    color: var(--text-muted);
-    max-width: 750px;
-    margin: 0 auto;
-    line-height: 2;
-}
-
-/* Carrossel Fino e Avançado */
-.carousel-container {
-    position: relative;
-    width: 100%;
-    height: 480px;
-    border-radius: var(--radius);
-    overflow: hidden;
-    margin-bottom: 60px;
-    box-shadow: var(--shadow-md);
-}
-
-.carousel-track {
-    width: 100%;
-    height: 100%;
-    position: relative;
-}
-
-.carousel-slide {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    transition: opacity 0.8s ease-in-out;
-    z-index: 1;
-}
-
-.carousel-slide.active {
-    opacity: 1;
-    z-index: 2;
-}
-
-.carousel-slide img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    filter: grayscale(20%) sepia(10%); /* Filtro de fotografia editorial */
-}
-
-.carousel-caption {
-    position: absolute;
-    bottom: 40px;
-    left: 40px;
-    right: 40px;
-    background: rgba(255, 255, 255, 0.92);
-    color: #1a161f;
-    padding: 20px 30px;
-    border-radius: var(--radius);
-    font-size: 1.1rem;
-    font-style: italic;
-    box-shadow: var(--shadow-sm);
-    max-width: 500px;
-    margin: 0 auto;
-    text-align: center;
-}
-
-[data-theme="dark"] .carousel-caption {
-    background: rgba(19, 16, 23, 0.92);
-    color: #f5f4f7;
-}
-
-.carousel-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: transparent;
-    border: 1px solid rgba(255,255,255,0.4);
-    color: white;
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    cursor: pointer;
-    z-index: 10;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.carousel-btn:hover { background: rgba(255,255,255,0.2); }
-.carousel-btn.prev { left: 20px; }
-.carousel-btn.next { right: 20px; }
-
-/* Bloco Informativo de Entrada */
-.intro-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
-}
-
-.intro-card {
-    background: transparent;
-    border-top: 1px solid var(--border); /* Apenas uma linha superior substitui caixas pesadas */
-    padding-top: 25px;
-}
-
-.intro-card h3 {
-    font-size: 1.3rem;
-    margin-bottom: 12px;
-}
-
-/* ==========================================================================
-   Portal de Escuta (Formulários Flutuantes)
-   ========================================================================== */
-.section-header {
-    margin-bottom: 45px;
-    border-bottom: 1px solid var(--border);
-    padding-bottom: 20px;
-}
-
-.section-header h2 { font-size: 2rem; }
-.section-header p { color: var(--text-muted); margin-top: 5px; }
-
-.escuta-wrapper {
-    display: grid;
-    grid-template-columns: 1.2fr 1fr;
-    gap: 50px;
-}
-
-.form-group { margin-bottom: 25px; }
-.form-group label {
-    display: block;
-    margin-bottom: 8px;
-    font-size: 0.85rem;
-    text-transform: uppercase;
-    font-weight: 600;
-    color: var(--text-muted);
-}
-
-.form-group input, .form-group textarea {
-    width: 100%;
-    padding: 14px;
-    border: none;
-    border-bottom: 1px solid var(--border); /* Apenas linha inferior estilo clássico */
-    background: transparent;
-    color: var(--text-main);
-    font-size: 1rem;
-    border-radius: 0;
-}
-
-.form-group input:focus, .form-group textarea:focus {
-    outline: none;
-    border-bottom-color: var(--primary);
-}
-
-/* Botões de Alfaiataria (Clean & Linhas Retas) */
-.btn {
-    border: 1px solid var(--primary);
-    padding: 14px 28px;
-    font-size: 0.85rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    cursor: pointer;
-    background: transparent;
-    color: var(--primary);
-    border-radius: var(--radius);
-}
-
-.btn-primary:hover {
-    background: var(--primary);
-    color: #ffffff;
-}
-
-.btn-accent {
-    border-color: var(--accent);
-    color: var(--accent);
-}
-
-.btn-accent:hover {
-    background: var(--accent);
-    color: #ffffff;
-}
-
-.btn-wide { width: 100%; }
-
-.feedback-box {
-    margin-top: 25px;
-    padding: 20px;
-    border-left: 2px solid var(--primary);
-    font-style: italic;
-    background: var(--primary-light);
-}
-
-/* Painel de Suporte Lateral */
-.motivation-card {
-    background: var(--primary-light) !important;
-    color: var(--primary) !important;
-    border: none;
-}
-
-.guidance-card h3 { font-size: 1.3rem; margin-bottom: 15px; }
-
-.guidance-list { list-style: none; }
-.guidance-list li {
-    margin-bottom: 20px;
-    font-size: 0.95rem;
-    color: var(--text-muted);
-    padding-left: 5px;
-}
-.guidance-list li strong { color: var(--text-main); }
-.guidance-list li i { color: var(--primary); margin-right: 10px; }
