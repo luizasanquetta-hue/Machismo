@@ -12,33 +12,35 @@
         @import url('https://googleapis.com');
 
         /* ==========================================================================
-           Design System: Glow-Minimalism & Bento Cards
+           Design System: Glassmorphic Cyber-Noir 2026 (Ultra Elegante)
            ========================================================================== */
         :root {
-            --bg-main: #f5f5f7;          /* Cinza estúdio premium (Apple Style) */
-            --bg-card: rgba(255, 255, 255, 0.85); /* Vidro fosco / Glassmorphism */
-            --text-main: #1d1d1f;        
-            --text-muted: #6e6e73;       
-            --primary: #5a189a;          /* Roxo digital */
-            --primary-light: #f3e8ff;    
-            --accent: #6200ee;           
-            --border: rgba(0, 0, 0, 0.05); 
-            --radius: 18px;              
+            --bg-main: #f8f6fb;          /* Off-white acetinado premium */
+            --bg-card: rgba(255, 255, 255, 0.65); /* Glassmorphism puro */
+            --text-main: #0f0a1c;        /* Roxo quase preto profundo */
+            --text-muted: #5c5770;       
+            --primary: #4d1394;          /* Roxo ametista escuro */
+            --primary-light: #f1e7fe;    
+            --accent: #7b2cbf;           
+            --accent-glow: rgba(123, 44, 191, 0.4);
+            --border: rgba(77, 19, 148, 0.06); 
+            --radius: 24px;              /* Curvas orgânicas e fluidas */
             --font-scale: 16px;
-            --blur: blur(20px);
-            --shadow: 0 8px 32px 0 rgba(90, 24, 154, 0.04);
+            --blur: blur(24px);
+            --shadow: 0 20px 50px rgba(77, 19, 148, 0.05);
         }
 
         [data-theme="dark"] {
-            --bg-main: #000000;          /* Preto OLED absoluto */
-            --bg-card: rgba(22, 22, 23, 0.8);
-            --text-main: #f5f5f7;
-            --text-muted: #86868b;
-            --primary: #9d4edd;
-            --primary-light: #241435;
-            --accent: #bb86fc;
-            --border: rgba(255, 255, 255, 0.08);
-            --shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+            --bg-main: #06030c;          /* Deep space noir */
+            --bg-card: rgba(18, 11, 30, 0.6);
+            --text-main: #f3efff;
+            --text-muted: #a39bb8;
+            --primary: #b583ff;
+            --primary-light: #1c0e35;
+            --accent: #9d4edd;
+            --accent-glow: rgba(157, 78, 221, 0.6);
+            --border: rgba(181, 131, 255, 0.12);
+            --shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
         }
 
         * {
@@ -55,7 +57,30 @@
             line-height: 1.65;
             letter-spacing: -0.015em;
             -webkit-font-smoothing: antialiased;
-            transition: background-color 0.5s ease, color 0.5s ease;
+            overflow-x: hidden;
+            position: relative;
+            transition: background-color 0.6s ease, color 0.6s ease;
+        }
+
+        /* Fundo Dinâmico com Orbes de Luz */
+        body::before, body::after {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+            filter: blur(80px);
+            z-index: -1;
+            pointer-events: none;
+            animation: floatGlow 12s infinite alternate ease-in-out;
+        }
+        body::before { top: -10%; left: -10%; }
+        body::after { bottom: -10%; right: -10%; animation-delay: 6s; }
+
+        @keyframes floatGlow {
+            0% { transform: translateY(0) scale(1); }
+            100% { transform: translateY(50px) scale(1.15); }
         }
 
         h1, h2, h3, h4, .logo {
@@ -76,50 +101,61 @@
             margin: 40px auto;
             padding: 0 24px;
             min-height: 75vh;
+            position: relative;
+            z-index: 2;
         }
 
+        /* Cartões Premium Glassmorphism */
         .card {
             background: var(--bg-card);
             backdrop-filter: var(--blur);
             -webkit-backdrop-filter: var(--blur);
             border: 1px solid var(--border);
             border-radius: var(--radius);
-            padding: 35px;
+            padding: 40px;
             box-shadow: var(--shadow);
-            margin-bottom: 24px;
-            transition: box-shadow 0.3s ease, background-color 0.5s ease;
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
         }
-        .card:hover { box-shadow: 0 12px 40px 0 rgba(90, 24, 154, 0.08); }
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 30px 60px rgba(77, 19, 148, 0.1);
+        }
 
         /* Barra de Acessibilidade Flutuante */
         .accessibility-bar {
-            background-color: rgba(255, 255, 255, 0.4);
-            backdrop-filter: var(--blur);
-            padding: 12px 5%;
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            padding: 14px 5%;
             display: flex;
             justify-content: flex-end;
             gap: 16px;
-            border-bottom: 1px solid var(--border);
         }
+        [data-theme="dark"] .accessibility-bar { background: rgba(0, 0, 0, 0.3); }
         .accessibility-bar button {
             background: var(--bg-card);
             border: 1px solid var(--border);
             color: var(--text-main);
-            padding: 8px 14px;
+            padding: 10px 18px;
             cursor: pointer;
-            border-radius: 30px;
+            border-radius: 40px;
             font-size: 0.8rem;
             font-weight: 700;
-            transition: transform 0.2s ease, border-color 0.2s ease;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        .accessibility-bar button:hover { transform: translateY(-1px); border-color: var(--primary); }
+        .accessibility-bar button:hover { transform: translateY(-2px); border-color: var(--primary); box-shadow: 0 8px 20px var(--accent-glow); }
 
-        /* Header Estilo Dynamic Island */
+        /* Header Escultural */
         header {
             background-color: var(--bg-card);
             backdrop-filter: var(--blur);
+            -webkit-backdrop-filter: var(--blur);
             border-bottom: 1px solid var(--border);
-            padding: 20px 5%;
+            padding: 24px 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -128,122 +164,89 @@
             z-index: 100;
             box-shadow: var(--shadow);
         }
-        header .logo { font-size: 1.25rem; color: var(--primary); display: flex; align-items: center; gap: 8px; }
+        header .logo { font-size: 1.4rem; font-weight: 700; color: var(--primary); display: flex; align-items: center; gap: 10px; }
 
-        nav ul { display: flex; list-style: none; gap: 8px; }
+        nav ul { display: flex; list-style: none; gap: 8px; background: rgba(0,0,0,0.03); padding: 6px; border-radius: 40px; border: 1px solid var(--border); }
+        [data-theme="dark"] nav ul { background: rgba(255,255,255,0.03); }
         nav ul li a {
             color: var(--text-muted);
             text-decoration: none;
             font-size: 0.9rem;
             font-weight: 700;
-            padding: 8px 16px;
-            border-radius: 20px;
-            transition: all 0.3s ease;
+            padding: 10px 22px;
+            border-radius: 40px;
+            display: inline-block;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        nav ul li a:hover { color: var(--text-main); background-color: rgba(0,0,0,0.03); }
-        nav ul li a.active { color: var(--primary); background-color: var(--primary-light); }
+        nav ul li a:hover { color: var(--text-main); }
+        nav ul li a.active { color: #ffffff; background-color: var(--primary); box-shadow: 0 8px 20px var(--accent-glow); }
+        [data-theme="dark"] nav ul li a.active { color: var(--bg-main); }
 
-        /* Abas e Animações */
+        /* Abas e Animações Fluidas */
         .tab-content { display: none; }
         .active-tab { display: block; }
-        .fade-in { animation: smoothScale 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+        .fade-in { animation: smoothScale 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
         @keyframes smoothScale {
-            from { opacity: 0; transform: scale(0.98) translateY(10px); }
+            from { opacity: 0; transform: scale(0.96) translateY(20px); }
             to { opacity: 1; transform: scale(1) translateY(0); }
         }
 
-        .hero-section { text-align: center; margin-bottom: 48px; }
+        /* Hero Section */
+        .hero-section { text-align: center; margin-bottom: 60px; }
         .hero-section h1 {
-            font-size: 2.8rem;
-            background: linear-gradient(135deg, var(--text-main), var(--primary));
+            font-size: 3.2rem;
+            background: linear-gradient(135deg, var(--text-main) 30%, var(--accent));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 16px;
+            margin-bottom: 20px;
+            line-height: 1.1;
         }
-        .welcome-msg { font-size: 1.2rem; color: var(--text-muted); max-width: 760px; margin: 0 auto; }
+        .welcome-msg { font-size: 1.3rem; color: var(--text-muted); max-width: 780px; margin: 0 auto; font-weight: 500; line-height: 1.8; }
 
-        /* Carrossel Cinema */
+        /* Carrossel de Cinema Curvado */
         .carousel-container {
             position: relative;
             width: 100%;
-            height: 480px;
+            height: 520px;
             border-radius: var(--radius);
             overflow: hidden;
-            margin-bottom: 32px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+            margin-bottom: 40px;
+            box-shadow: 0 30px 60px rgba(77, 19, 148, 0.12);
+            border: 1px solid rgba(255,255,255,0.1);
         }
         .carousel-track { width: 100%; height: 100%; position: relative; }
-        .carousel-slide { position: absolute; width: 100%; height: 100%; opacity: 0; transition: opacity 0.8s ease-in-out; z-index: 1; }
+        .carousel-slide { position: absolute; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out; z-index: 1; }
         .carousel-slide.active { opacity: 1; z-index: 2; }
-        .carousel-slide img { width: 100%; height: 100%; object-fit: cover; }
+        .carousel-slide img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.9); }
         .carousel-caption {
             position: absolute;
-            bottom: 24px;
-            left: 24px;
-            background: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(10px);
+            bottom: 35px;
+            left: 35px;
+            background: rgba(15, 10, 28, 0.45);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
             color: #ffffff;
-            padding: 16px 24px;
-            border-radius: 12px;
-            font-size: 0.95rem;
+            padding: 20px 30px;
+            border-radius: 16px;
+            font-size: 1.1rem;
             font-weight: 600;
-            max-width: fit-content;
+            border: 1px solid rgba(255,255,255,0.15);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
         .carousel-btn {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            background: rgba(255, 255, 255, 0.9);
-            border: none;
-            color: #000000;
-            width: 44px;
-            height: 44px;
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: #ffffff;
+            font-size: 1.1rem;
+            width: 52px;
+            height: 52px;
             border-radius: 50%;
             cursor: pointer;
             z-index: 10;
             display: flex;
             align-items: center;
             justify-content: center;
-        }
-        .carousel-btn.prev { left: 16px; }
-        .carousel-btn.next { right: 16px; }
-
-        /* Bento Grid Layout */
-        .intro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-        .intro-card { background: var(--bg-card); border: 1px solid var(--border); padding: 32px; border-radius: var(--radius); box-shadow: var(--shadow); }
-        .intro-card h3 { font-size: 1.3rem; margin-bottom: 12px; color: var(--primary); }
-        .intro-card p { font-size: 1rem; color: var(--text-muted); }
-
-        /* Formulários e Escuta */
-        .section-header { margin-bottom: 40px; }
-        .section-header h2 { font-size: 2.2rem; margin-bottom: 8px; color: var(--primary); }
-        .section-header p { color: var(--text-muted); font-size: 1.1rem; }
-
-        .escuta-wrapper { display: grid; grid-template-columns: 1.2fr 1fr; gap: 24px; }
-        .form-group { margin-bottom: 20px; }
-        .form-group label { display: block; margin-bottom: 8px; font-size: 0.85rem; font-weight: 700; }
-        .form-group input, .form-group textarea {
-            width: 100%;
-            padding: 14px;
-            border: 1px solid var(--border);
-            background: var(--bg-main);
-            color: var(--text-main);
-            border-radius: 10px;
-            font-size: 1rem;
-        }
-        .form-group input:focus, .form-group textarea:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 4px rgba(90, 24, 154, 0.1);
-        }
-
-        /* Botões de Ação */
-        .btn { border: none; padding: 14px 28px; font-size: 0.95rem; font-weight: 700; cursor: pointer; border-radius: 30px; text-align: center; transition: all 0.2s ease; }
-        .btn-primary { background: var(--primary); color: #ffffff; box-shadow: 0 4px 12px rgba(90, 24, 154, 0.15); }
-        .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(90, 24, 154, 0.25); }
-        .btn-accent { background: var(--text-main); color: var(--bg-main); }
-        .btn-accent:hover { opacity: 0.9; }
-        .btn-wide { width: 100%; }
-
-
-
