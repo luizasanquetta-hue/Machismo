@@ -1,237 +1,271 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portal Conecta - Conscientização sobre o Machismo</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-</head>
-<body>
+/* Variáveis para gerenciamento de cores e temas (Modo Claro/Escuro) */
+:root {
+    --bg-color: #f8f9fa;
+    --text-color: #333333;
+    --card-bg: #ffffff;
+    --primary-color: #6f42c1;
+    --secondary-color: #e9ecef;
+    --accent-color: #20c997;
+    --border-color: #dddddd;
+    --font-base: 16px;
+}
 
-  <div class="top-bar">
-    <div class="container top-bar-content">
-      <span class="tag-badge"><i class="fas fa-heart"></i> Espaço de Apoio Estudantil</span>
-      <div class="access-buttons">
-        <button id="btn-contrast"><i class="fas fa-adjust"></i> Alto Contraste</button>
-        <button id="btn-font-increase"><i class="fas fa-font"></i> A+</button>
-        <button id="btn-font-reset"><i class="fas fa-redo"></i> A-</button>
-      </div>
-    </div>
-  </div>
+[data-theme="dark"] {
+    --bg-color: #121212;
+    --text-color: #f8f9fa;
+    --card-bg: #1e1e1e;
+    --primary-color: #bb86fc;
+    --secondary-color: #2d2d2d;
+    --border-color: #444444;
+}
 
-  <header>
-    <div class="container header-container">
-      <div class="logo">
-        <i class="fas fa-hands-holding-heart logo-icon"></i>
-        <div>
-          <h1>Portal Conecta</h1>
-          <span class="sub-logo">Respeito, Igualdade e Empatia</span>
-        </div>
-      </div>
-      <nav>
-        <ul>
-          <li><a href="#inicio">Início</a></li>
-          <li><a href="#aprender">Entenda</a></li>
-          <li><a href="#atitudes">Atitudes</a></li>
-          <li><a href="#escuta">Escuta</a></li>
-          <li><a href="#quiz">Quiz</a></li>
-          <li><a href="#referencias">Fontes</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
 
-  <main>
-    <section id="inicio" class="hero-section">
-      <div class="container hero-grid">
-        <div class="hero-text">
-          <span class="pill-tag">Conscientização na Escola</span>
-          <h2>Construindo um Ambiente Sem Machismo</h2>
-          <div class="welcome-msg">
-            "Bem-vindo ao Portal Conecta. Aqui você encontra informações, orientações e apoio sobre o combate ao machismo no ambiente escolar. Vamos juntos promover o respeito e a empatia!"
-          </div>
-          <p>
-            A escola é o lugar onde aprendemos e construímos amizades. Garantir que esse espaço seja acolhedor e igualitário para alunas e alunos é fundamental.
-          </p>
-          <div class="hero-buttons">
-            <a href="#escuta" class="btn btn-primary"><i class="fas fa-comment-dots"></i> Portal de Escuta</a>
-            <a href="#quiz" class="btn btn-secondary"><i class="fas fa-gamepad"></i> Testar Conhecimentos</a>
-          </div>
-        </div>
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: var(--font-base);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
 
-        <div class="carousel-card">
-          <div class="carousel-item active">
-            <i class="fas fa-quote-left quote-icon"></i>
-            <p>O respeito mútuo fortalece a convivência e transforma diferenças em aprendizado.</p>
-            <span>— Cultura de Paz</span>
-          </div>
-          <div class="carousel-item">
-            <i class="fas fa-quote-left quote-icon"></i>
-            <p>Lugar de mulher é onde ela quiser: na ciência, na tecnologia, nos esportes e onde mais desejar.</p>
-            <span>— Igualdade e Direitos</span>
-          </div>
-          <div class="carousel-dots">
-            <span class="dot active" onclick="setSlide(0)"></span>
-            <span class="dot" onclick="setSlide(1)"></span>
-          </div>
-        </div>
-      </div>
-    </section>
+/* Barra de Acessibilidade */
+.accessibility-bar {
+    background-color: var(--secondary-color);
+    padding: 8px 20px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+}
+.accessibility-bar button {
+    background: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
 
-    <section id="aprender" class="section">
-      <div class="container">
-        <div class="section-title">
-          <h2><i class="fas fa-lightbulb"></i> Entendendo o Machismo no Dia a Dia</h2>
-          <p>Reconhecer atitudes incorretas é o primeiro passo para a mudança.</p>
-        </div>
+/* Cabeçalho e Nav */
+header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+header .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+}
+nav ul li a {
+    color: rgba(255,255,255,0.8);
+    text-decoration: none;
+    font-weight: 600;
+    padding: 8px 12px;
+    border-radius: 4px;
+}
+nav ul li a.active, nav ul li a:hover {
+    color: white;
+    background-color: rgba(255,255,255,0.2);
+}
 
-        <div class="cards-grid">
-          <article class="info-card">
-            <div class="card-icon bg-lilac"><i class="fas fa-balance-scale"></i></div>
-            <h3>O que é Machismo?</h3>
-            <p>Trata-se do conjunto de atitudes ou ideias que colocam os homens em posição de superioridade em relação às mulheres, gerando desigualdades na sociedade e na escola.</p>
-          </article>
+/* Layout Geral */
+.container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+    min-height: 70vh;
+}
 
-          <article class="info-card">
-            <div class="card-icon bg-pink"><i class="fas fa-comments"></i></div>
-            <h3>Microagressões</h3>
-            <p>Comentários preconceituosos, piadas ofensivas e interrupções frequentes quando meninas estão falando são atitudes que devem ser eliminadas do cotidiano.</p>
-          </article>
+/* Animações e Controle de Abas */
+.tab-content {
+    display: none;
+}
+.active-tab {
+    display: block;
+}
+.fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
 
-          <article class="info-card">
-            <div class="card-icon bg-orange"><i class="fas fa-hand-holding-heart"></i></div>
-            <h3>Respeito Coletivo</h3>
-            <p>A desconstrução de preconceitos melhora o ambiente escolar para todos, permitindo que cada estudante se expresse livremente e sem medo.</p>
-          </article>
-        </div>
-      </div>
-    </section>
+/* Home Section */
+.hero {
+    text-align: center;
+    margin-bottom: 40px;
+}
+.welcome-msg {
+    font-size: 1.25rem;
+    font-style: italic;
+    color: var(--primary-color);
+    margin-top: 15px;
+}
+.carousel-container {
+    width: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    margin-bottom: 40px;
+}
+.carousel-slide img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    display: block;
+}
+.carousel-caption {
+    position: absolute;
+    bottom: 0;
+    background: rgba(0,0,0,0.6);
+    color: white;
+    width: 100%;
+    padding: 15px;
+    text-align: center;
+}
+.card-info {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    padding: 25px;
+    border-radius: 8px;
+}
 
-    <section id="atitudes" class="section">
-      <div class="container">
-        <div class="section-title">
-          <h2><i class="fas fa-seedling"></i> Atitudes Práticas na Escola</h2>
-          <p>Ações simples ajudam a transformar a convivência no ambiente escolar.</p>
-        </div>
+/* Portal de Escuta */
+.escuta-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-top: 20px;
+}
+@media (max-width: 768px) {
+    .escuta-grid { grid-template-columns: 1fr; }
+    header { flex-direction: column; gap: 15px; text-align: center; }
+}
+.form-group {
+    margin-bottom: 15px;
+}
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+.form-group input, .form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    border-radius: 6px;
+}
+.btn-submit {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 6px;
+    width: 100%;
+}
+.btn-submit:hover { opacity: 0.9; }
+.hidden { display: none; }
+#feedback-escuta {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #d4edda;
+    color: #155724;
+    border-left: 5px solid var(--accent-color);
+    border-radius: 4px;
+}
+[data-theme="dark"] #feedback-escuta {
+    background-color: #1b4332;
+    color: #d4edda;
+}
+.motivation-box, .guidance-box {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+.guidance-box ul { list-style-position: inside; margin-top: 10px; }
+.guidance-box li { margin-bottom: 8px; }
 
-        <div class="guide-box">
-          <div class="guide-step">
-            <span class="step-num">1</span>
-            <div>
-              <h4>Respeite a Fala</h4>
-              <p>Escute as opiniões das suas colegas em trabalhos de grupo e conversas sem interrompê-las.</p>
-            </div>
-          </div>
-          <div class="guide-step">
-            <span class="step-num">2</span>
-            <div>
-              <h4>Não Replique Piadas Sexistas</h4>
-              <p>Evite compartilhar brincadeiras que inferiorizem ou desrespeitem as mulheres.</p>
-            </div>
-          </div>
-          <div class="guide-step">
-            <span class="step-num">3</span>
-            <div>
-              <h4>Apoie e Denuncie</h4>
-              <p>Se testemunhar atos de discriminação ou intimidação, ofereça apoio e procure a orientação pedagógica da escola.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+/* Quiz Styles */
+.quiz-item {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+.quiz-options label {
+    display: block;
+    padding: 8px;
+    background-color: var(--secondary-color);
+    margin-top: 5px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.quiz-options input { margin-right: 10px; }
+#quiz-result {
+    margin-top: 20px;
+    padding: 20px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: center;
+    background-color: var(--secondary-color);
+    border-radius: 8px;
+}
 
-    <section id="escuta" class="section">
-      <div class="container">
-        <div class="section-title">
-          <h2><i class="fas fa-heartbeat"></i> Portal de Escuta</h2>
-          <p>Espaço de reflexão para desabafar e buscar orientação.</p>
-        </div>
+/* Referências */
+.ref-list li {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 6px;
+    list-style: none;
+}
+.ref-list a { color: var(--primary-color); font-weight: bold; text-decoration: none; }
+.ref-list span { display: block; font-size: 0.9rem; opacity: 0.8; }
 
-        <div class="escuta-grid">
-          <div class="form-container">
-            <form id="form-escuta">
-              <label for="desabafo"><i class="fas fa-pen-fancy"></i> Escreva sua dúvida ou desabafo:</label>
-              <textarea id="desabafo" rows="5" placeholder="Digite sua mensagem aqui... Este formulário não armazena dados." required></textarea>
-              <button type="submit" class="btn btn-primary btn-block"><i class="fas fa-paper-plane"></i> Enviar Mensagem (Simulação)</button>
-            </form>
-            <div id="resposta-escuta" class="hidden"></div>
-          </div>
-
-          <div class="support-info">
-            <h3><i class="fas fa-life-ring"></i> Canais Oficiais de Apoio</h3>
-            <p>Se precisar de orientação ou ajuda presencial, recorra a pessoas e órgãos capacitados:</p>
-            <ul class="support-list">
-              <li><i class="fas fa-chalkboard-teacher"></i> <strong>Professores e Pedagogos:</strong> Apoio dentro da escola.</li>
-              <li><i class="fas fa-user-shield"></i> <strong>Equipe Diretiva:</strong> Para tratar casos sérios de discriminação.</li>
-              <li><i class="fas fa-phone-alt"></i> <strong>Disque 180:</strong> Central de Atendimento à Mulher.</li>
-              <li><i class="fas fa-shield-alt"></i> <strong>Disque 100:</strong> Proteção de Direitos Humanos.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="quiz" class="section">
-      <div class="container">
-        <div class="section-title">
-          <h2><i class="fas fa-check-circle"></i> Quiz de Conscientização</h2>
-          <p>Responda às perguntas abaixo e avalie seus conhecimentos!</p>
-        </div>
-
-        <div class="quiz-wrapper">
-          <div id="quiz-container"></div>
-          <div class="quiz-actions">
-            <button id="btn-submit-quiz" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Finalizar Quiz</button>
-          </div>
-          <div id="quiz-resultado" class="result-banner hidden"></div>
-        </div>
-      </div>
-    </section>
-
-    <section id="referencias" class="section">
-      <div class="container">
-        <div class="section-title">
-          <h2><i class="fas fa-graduation-cap"></i> Referências</h2>
-          <p>Fontes educativas e institucionais confiáveis:</p>
-        </div>
-
-        <div class="ref-grid">
-          <a href="https://www.gov.br/mulheres/pt-br" target="_blank" rel="noopener" class="ref-card">
-            <i class="fas fa-building"></i>
-            <div>
-              <h4>Ministério das Mulheres</h4>
-              <p>Políticas e ações de combate à violência e desigualdade.</p>
-            </div>
-          </a>
-
-          <a href="https://www.unicef.org/brazil/" target="_blank" rel="noopener" class="ref-card">
-            <i class="fas fa-child"></i>
-            <div>
-              <h4>UNICEF Brasil</h4>
-              <p>Proteção aos direitos de crianças e adolescentes.</p>
-            </div>
-          </a>
-
-          <a href="https://www.institutoamaria.org.br/" target="_blank" rel="noopener" class="ref-card">
-            <i class="fas fa-book"></i>
-            <div>
-              <h4>Instituto Maria da Penha</h4>
-              <p>Programas educativos de conscientização e apoio.</p>
-            </div>
-          </a>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="container footer-content">
-      <p>&copy; 2026 Portal Conecta | Projeto Informativo Escolar</p>
-      <button id="btn-top"><i class="fas fa-arrow-up"></i> Topo</button>
-    </div>
-  </footer>
-
-  <script src="script.js"></script>
-</body>
-</html>
+/* Botão Topo e Footer */
+#btn-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: var(--secondary-color);
+    border-top: 1px solid var(--border-color);
+    margin-top: 40px;
+}
