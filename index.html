@@ -3,23 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vozes da Igualdade — Perspectivas e Diálogo</title>
+    <title>Portal Vozes da Igualdade — Consciência e Respeito</title>
     <link rel="stylesheet" href="style.css">
+    <!-- Ícones FontAwesome mantidos para suporte a acessibilidade e navegação -->
     <link rel="stylesheet" href="https://cloudflare.com">
 </head>
 <body>
 
-    <!-- Acessibilidade Arquitetônica -->
-    <div class="accessibility-bar" role="toolbar" aria-label="Acessibilidade">
-        <button id="btn-contrast" title="Alternar Contraste"><i class="fas fa-adjust"></i> Modo Escuro</button>
-        <button id="btn-font-plus" title="Aumentar Texto"><i class="fas fa-text-height"></i> Aumentar</button>
-        <button id="btn-font-minus" title="Diminuir Texto">Diminuir</button>
+    <!-- Barra de Ferramentas de Acessibilidade Minimalista -->
+    <div class="accessibility-bar" role="toolbar" aria-label="Ferramentas de acessibilidade">
+        <button id="btn-contrast" title="Alternar Modo Escuro"><i class="fas fa-moon"></i> Alto Contraste</button>
+        <button id="btn-font-plus" title="Aumentar Fonte"><i class="fas fa-plus"></i> <i class="fas fa-font"></i></button>
+        <button id="btn-font-minus" title="Diminuir Fonte"><i class="fas fa-minus"></i> <i class="fas fa-font"></i></button>
     </div>
 
-    <!-- Cabeçalho Minimalista -->
+    <!-- Cabeçalho Arquitetônico -->
     <header>
         <div class="logo">
-            <span>Vozes da Igualdade</span>
+            <i class="fas fa-feather-alt"></i> Vozes da Equality.
         </div>
         <nav>
             <ul>
@@ -31,7 +32,7 @@
         </nav>
     </header>
 
-    <!-- Área Principal de Conteúdo -->
+    <!-- Conteúdo Centralizado do Portal -->
     <main class="container">
 
         <!-- 1. PÁGINA INICIAL -->
@@ -41,35 +42,35 @@
                 <p class="welcome-msg">"Bem-vindo ao Portal Vozes da Igualdade. Aqui você encontrará informações, orientações e apoio sobre situações de desigualdade e machismo vivenciadas no ambiente escolar e no cotidiano."</p>
             </div>
 
-            <!-- Galeria / Carrossel Editorial Nativamente Funcional -->
+            <!-- Carrossel de Imagens Editorial com Controles Nativos -->
             <div class="carousel-container">
                 <div class="carousel-track">
                     <div class="carousel-slide active">
-                        <img src="https://unsplash.com" alt="Diálogo e igualdade">
+                        <img src="https://unsplash.com" alt="Grupo diversificado discutindo igualdade de direitos">
                         <div class="carousel-caption">Promovendo a Igualdade de Gênero nas Escolas</div>
                     </div>
                     <div class="carousel-slide">
-                        <img src="https://unsplash.com" alt="Liderança feminina">
+                        <img src="https://unsplash.com" alt="Liderança feminina debatendo em ambiente corporativo">
                         <div class="carousel-caption">Desconstruindo Papéis Tradicionais de Gênero</div>
                     </div>
                     <div class="carousel-slide">
-                        <img src="https://unsplash.com" alt="Espaços de diálogo">
+                        <img src="https://unsplash.com" alt="Estudantes em círculo conversando com empatia">
                         <div class="carousel-caption">Construindo Espaços de Diálogo Seguros</div>
                     </div>
                 </div>
-                <button class="carousel-btn prev" onclick="mudarSlide(-1)"><i class="fas fa-arrow-left"></i></button>
-                <button class="carousel-btn next" onclick="mudarSlide(1)"><i class="fas fa-arrow-right"></i></button>
+                <button class="carousel-btn prev" onclick="mudarSlide(-1)"><i class="fas fa-chevron-left"></i></button>
+                <button class="carousel-btn next" onclick="mudarSlide(1)"><i class="fas fa-chevron-right"></i></button>
             </div>
 
-            <!-- Artigos Curtos Introdutórios -->
+            <!-- Grid de Introdução Sóbria -->
             <div class="intro-grid">
                 <div class="intro-card">
                     <h3>O que é Machismo Estrutural?</h3>
-                    <p>É um arranjo silencioso de hábitos, linguagens e dinâmicas inconscientes que perpetuam a assimetria entre gêneros. Desconstruir esse sistema no cotidiano é fundamental para resgatar a equidade intelectual e social.</p>
+                    <p>É o sistema de crenças e hábitos profundamente enraizados na nossa cultura que posicionam o gênero masculino em uma situação de privilégio ou superioridade artificial, limitando historicamente a autonomia e o respeito direcionados às mulheres.</p>
                 </div>
                 <div class="intro-card">
                     <h3>Impacto no Ambiente Escolar</h3>
-                    <p>Manifesta-se de maneiras sutis, como piadas depreciativas camufladas de humor ou a segregação de tarefas e áreas de estudo. Identificar essas barreiras garante um ecossistema seguro e livre para o desenvolvimento coletivo.</p>
+                    <p>Manifesta-se desde piadas depreciativas disfarçadas de humor cotidiano até a exclusão de estudantes de atividades esportivas, acadêmicas ou de liderança, baseando-se puramente em estereótipos ultrapassados de gênero.</p>
                 </div>
             </div>
         </section>
@@ -78,36 +79,41 @@
         <section id="escuta" class="tab-content fade-in">
             <div class="section-header">
                 <h2>Portal de Escuta Ativa</h2>
-                <p>Um refúgio para expressão e acolhimento. Este ambiente simula um canal de diálogo confidencial. Seus registros são efêmeros e não serão armazenados em bancos de dados.</p>
+                <p>Este ambiente é um espaço estritamente seguro e anônimo. Sinta-se livre para simular um desabafo ou relatar uma vivência. Suas respostas não serão salvas em nenhum servidor externo.</p>
             </div>
 
             <div class="escuta-wrapper">
+                <!-- Formulário Técnico de Envio -->
                 <div class="card form-container">
                     <form id="form-escuta" onsubmit="enviarDesabafo(event)">
                         <div class="form-group">
-                            <label for="input-codinome">Assinatura / Codinome (Opcional)</label>
-                            <input type="text" id="input-codinome" placeholder="Ex: Anônimo, Íris, Girassol...">
+                            <label for="input-codinome">Codinome ou Pseudônimo (Opcional):</label>
+                            <input type="text" id="input-codinome" placeholder="Ex: Girassol, Pensador, Anônima...">
                         </div>
                         <div class="form-group">
-                            <label for="textarea-relato">O seu relato ou reflexão</label>
-                            <textarea id="textarea-relato" rows="5" required placeholder="Sinta-se confortável para escrever..."></textarea>
+                            <label for="textarea-relato">Relate aqui a sua situação ou desabafo:</label>
+                            <textarea id="textarea-relato" rows="6" required placeholder="Digite seu desabafo com tranquilidade..."></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary">Submeter Relato Simulado</button>
+                        <button type="submit" class="btn btn-primary">Encaminhar Relato Simulado</button>
                     </form>
+
+                    <!-- Mensagem de Feedback Condicional via JavaScript -->
                     <div id="escuta-feedback" class="feedback-box hidden"></div>
                 </div>
 
+                <!-- Painel de Orientações e Apoio Emocional -->
                 <div class="support-panel">
                     <div class="card motivation-card">
                         <p id="txt-motivacional">"O primeiro passo para a mudança é romper o silêncio. Sua voz carrega poder, relevância e direito ao espaço."</p>
                     </div>
+
                     <div class="card guidance-card">
-                        <h3>Canais de Apoio Efetivo</h3>
-                        <p>A conscientização acadêmica caminha lado a lado com redes de suporte oficiais. Em cenários reais de vulnerabilidade, acione imediatamente:</p>
+                        <h3>Onde buscar apoio real?</h3>
+                        <p>Situações reais exigem redes de apoio estruturadas. Se você ou alguém que você conhece precisa de ajuda, procure imediatamente:</p>
                         <ul class="guidance-list">
-                            <li><i class="fas fa-minus"></i> <strong>Corpo Pedagógico:</strong> Professores, orientadores e tutores da sua instituição escolar.</li>
-                            <li><i class="fas fa-minus"></i> <strong>Lideranças de Confiança:</strong> Familiares e responsáveis aptos a acolher sua demanda.</li>
-                            <li><i class="fas fa-minus"></i> <strong>Central Nacional de Apoio:</strong> Disque 180 para acolhimento e denúncias confidenciais de gênero.</li>
+                            <li><i class="fas fa-chalkboard-teacher"></i> <strong>Professores e Pedagogos:</strong> Apoio imediato na mediação escolar.</li>
+                            <li><i class="fas fa-user-friends"></i> <strong>Equipe de Direção ou Familiares:</strong> Adultos da sua estrita confiança.</li>
+                            <li><i class="fas fa-phone-alt"></i> <strong>Central de Atendimento (Ligue 180):</strong> Canal gratuito e confidencial de denúncias.</li>
                         </ul>
                     </div>
                 </div>
@@ -117,13 +123,13 @@
         <!-- 3. QUIZ INTERATIVO -->
         <section id="quiz" class="tab-content fade-in">
             <div class="section-header">
-                <h2>Estudo de Casos Práticos</h2>
-                <p>Analise criticamente as interações propostas abaixo e avalie o seu entendimento acerca de dinâmicas institucionais, respeito e equidade de gênero.</p>
+                <h2>Desafio de Consciência Coletiva</h2>
+                <p>Responda às 5 situações cotidianas abaixo para avaliar as suas percepções práticas sobre igualdade de direitos, empatia e respeito mútuo.</p>
             </div>
 
-            <div id="quiz-block">
+            <div id="quiz-block" class="card">
                 <div id="quiz-questions"></div>
-                <button onclick="avaliarQuiz()" class="btn btn-accent btn-wide">Processar Diagnóstico</button>
+                <button onclick="avaliarQuiz()" class="btn btn-accent btn-wide">Validar e Computar Respostas</button>
                 <div id="quiz-summary" class="result-box hidden"></div>
             </div>
         </section>
@@ -131,41 +137,32 @@
         <!-- 4. PÁGINA DE REFERÊNCIAS -->
         <section id="referencias" class="tab-content fade-in">
             <div class="section-header">
-                <h2>Acervo Bibliográfico</h2>
-                <p>Nossos pilares informativos apoiam-se exclusivamente em diretrizes oficiais e canais técnicos chancelados pela comunidade científica e de direitos humanos:</p>
+                <h2>Acervo Institucional e Fontes de Pesquisa</h2>
+                <p>Garantimos a integridade de nossas informações baseando toda a curadoria em canais técnicos, acadêmicos e governamentais oficiais:</p>
             </div>
 
             <div class="references-list">
                 <div class="ref-card">
-                    <h4><a href="https://www.gov.br" target="_blank">Ministério das Mulheres — Governo Federal do Brasil</a></h4>
-                    <p>Políticas de enfrentamento à violência estrutural e dados estatísticos consolidados sobre vulnerabilidades de gênero no território nacional.</p>
+                    <div class="ref-body">
+                        <h4><a href="https://www.gov.br" target="_blank">Ministério das Mulheres — Governo Federal do Brasil</a></h4>
+                        <p>Políticas públicas estruturais, dados estatísticos atualizados e cartilhas normativas sobre o enfrentamento da violência e discriminação baseada em gênero.</p>
+                    </div>
                 </div>
+
                 <div class="ref-card">
-                    <h4><a href="https://onumulheres.org.br" target="_blank">ONU Mulheres Brasil</a></h4>
-                    <p>Tratados internacionais, guias para o empoderamento feminino e relatórios técnicos sobre equidade no ambiente de ensino e trabalho.</p>
+                    <div class="ref-body">
+                        <h4><a href="https://onumulheres.org.br" target="_blank">ONU Mulheres Brasil</a></h4>
+                        <p>Princípios de empoderamento global, estudos acadêmicos sobre igualdade de condições laborais, pedagógicas e combate ativo ao assédio.</p>
+                    </div>
                 </div>
+
                 <div class="ref-card">
-                    <h4><a href="https://unicef.org" target="_blank">UNICEF Brasil — Fundo das Nações Unidas</a></h4>
-                    <p>Estratégias pedagógicas contra o bullying, o preconceito e o machismo sistemático direcionadas ao ambiente escolar e de desenvolvimento juvenil.</p>
+                    <div class="ref-body">
+                        <h4><a href="https://unicef.org" target="_blank">UNICEF Brasil — Fundo das Nações Unidas para a Infância</a></h4>
+                        <p>Manuais pedagógicos voltados a educadores para prevenção de bullying, machismo estrutural e preconceitos na malha escolar de base.</p>
+                    </div>
                 </div>
+
                 <div class="ref-card">
-                    <h4><a href="https://fiocruz.br" target="_blank">Fundação Oswaldo Cruz (Fiocruz)</a></h4>
-                    <p>Artigos de saúde pública correlacionando os efeitos nocivos do assédio psicológico estrutural ao bem-estar e integridade mental das estudantes.</p>
-                </div>
-            </div>
-        </section>
-
-    </main>
-
-    <!-- Botão Flutuante de Retorno -->
-    <button id="scroll-to-top" title="Retornar ao topo"><i class="fas fa-arrow-up"></i></button>
-
-    <footer>
-        <p>&copy; 2026 Vozes da Igualdade. Desenvolvido para fins estritamente pedagógicos e analíticos.</p>
-    </footer>
-
-    <script src="script.js"></script>
-</body>
-</html>
 
 
