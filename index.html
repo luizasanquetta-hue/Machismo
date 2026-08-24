@@ -1,46 +1,43 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portal Vozes da Igualdade — Consciência e Respeito</title>
-    <!-- Biblioteca de ícones FontAwesome para os botões e navegação -->
-    <link rel="stylesheet" href="https://cloudflare.com">
     
     <style>
-        /* Importação das fontes premium e contemporâneas */
+        /* ==========================================================================
+           Design System: Glassmorphic Cyber-Noir (Otimizado)
+           ========================================================================== */
         @import url('https://googleapis.com');
 
-        /* ==========================================================================
-           Design System: Glassmorphic Cyber-Noir 2026 (Ultra Elegante)
-           ========================================================================== */
         :root {
-            --bg-main: #f8f6fb;          /* Off-white acetinado premium */
-            --bg-card: rgba(255, 255, 255, 0.65); /* Glassmorphism puro */
-            --text-main: #0f0a1c;        /* Roxo quase preto profundo */
+            --bg-main: #f8f6fb;          
+            --bg-card: rgba(255, 255, 255, 0.65); 
+            --text-main: #0f0a1c;        
             --text-muted: #5c5770;       
-            --primary: #4d1394;          /* Roxo ametista escuro */
+            --primary: #4d1394;          
             --primary-light: #f1e7fe;    
             --accent: #7b2cbf;           
-            --accent-glow: rgba(123, 44, 191, 0.4);
-            --border: rgba(77, 19, 148, 0.06); 
-            --radius: 24px;              /* Curvas orgânicas e fluidas */
-            --font-scale: 16px;
+            --accent-glow: rgba(123, 44, 191, 0.15);
+            --border: rgba(77, 19, 148, 0.08); 
+            --radius: 24px;              
+            --font-base: 16px;
             --blur: blur(24px);
-            --shadow: 0 20px 50px rgba(77, 19, 148, 0.05);
+            --shadow: 0 20px 50px rgba(77, 19, 148, 0.04);
         }
 
         [data-theme="dark"] {
-            --bg-main: #06030c;          /* Deep space noir */
+            --bg-main: #06030c;          
             --bg-card: rgba(18, 11, 30, 0.6);
             --text-main: #f3efff;
             --text-muted: #a39bb8;
             --primary: #b583ff;
             --primary-light: #1c0e35;
             --accent: #9d4edd;
-            --accent-glow: rgba(157, 78, 221, 0.6);
+            --accent-glow: rgba(157, 78, 221, 0.3);
             --border: rgba(181, 131, 255, 0.12);
-            --shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
+            --shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
         }
 
         * {
@@ -51,7 +48,7 @@
 
         body {
             font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-            font-size: var(--font-scale);
+            font-size: var(--font-base);
             background-color: var(--bg-main);
             color: var(--text-main);
             line-height: 1.65;
@@ -59,13 +56,13 @@
             -webkit-font-smoothing: antialiased;
             overflow-x: hidden;
             position: relative;
-            transition: background-color 0.6s ease, color 0.6s ease;
+            transition: background-color 0.5s ease, color 0.5s ease;
         }
 
         /* Fundo Dinâmico com Orbes de Luz */
         body::before, body::after {
             content: '';
-            position: absolute;
+            position: fixed;
             width: 500px;
             height: 500px;
             border-radius: 50%;
@@ -80,32 +77,103 @@
 
         @keyframes floatGlow {
             0% { transform: translateY(0) scale(1); }
-            100% { transform: translateY(50px) scale(1.15); }
+            100% { transform: translateY(40px) scale(1.1); }
         }
 
         h1, h2, h3, h4, .logo {
             font-family: 'Space Grotesk', sans-serif;
             font-weight: 700;
             letter-spacing: -0.04em;
+        }
+
+        /* Barra de Acessibilidade Flutuante */
+        .accessibility-bar {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            padding: 10px 5%;
+            display: flex;
+            justify-content: flex-end;
+            gap: 12px;
+        }
+        [data-theme="dark"] .accessibility-bar { background: rgba(0, 0, 0, 0.2); }
+        
+        .accessibility-bar button {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
             color: var(--text-main);
+            padding: 8px 16px;
+            cursor: pointer;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .accessibility-bar button:hover { 
+            transform: translateY(-2px); 
+            border-color: var(--primary); 
+            box-shadow: 0 8px 20px var(--accent-glow); 
         }
 
-        input, textarea, button, nav, footer {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-weight: 600;
-            letter-spacing: -0.01em;
+        /* Header */
+        header {
+            background-color: var(--bg-card);
+            backdrop-filter: var(--blur);
+            -webkit-backdrop-filter: var(--blur);
+            border-bottom: 1px solid var(--border);
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--shadow);
         }
+        header .logo { font-size: 1.5rem; color: var(--primary); display: flex; align-items: center; gap: 10px; }
 
+        nav ul { display: flex; list-style: none; gap: 8px; background: rgba(0,0,0,0.03); padding: 6px; border-radius: 40px; border: 1px solid var(--border); }
+        [data-theme="dark"] nav ul { background: rgba(255,255,255,0.03); }
+        
+        nav ul li button {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 700;
+            padding: 10px 22px;
+            border-radius: 40px;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        nav ul li button:hover { color: var(--text-main); }
+        nav ul li button.active { color: #ffffff; background-color: var(--primary); box-shadow: 0 8px 20px var(--accent-glow); }
+        [data-theme="dark"] nav ul li button.active { color: var(--bg-main); }
+
+        /* Container Principal */
         .container {
             max-width: 1040px;
-            margin: 40px auto;
+            margin: 60px auto;
             padding: 0 24px;
-            min-height: 75vh;
-            position: relative;
-            z-index: 2;
+            min-height: 60vh;
         }
 
-        /* Cartões Premium Glassmorphism */
+        /* Abas e Animações */
+        .tab-content { display: none; }
+        .tab-content.active-tab { display: block; }
+        
+        .fade-in { animation: smoothScale 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        @keyframes smoothScale {
+            from { opacity: 0; transform: scale(0.98) translateY(15px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        /* Cartões */
         .card {
             background: var(--bg-card);
             backdrop-filter: var(--blur);
@@ -115,84 +183,15 @@
             padding: 40px;
             box-shadow: var(--shadow);
             margin-bottom: 30px;
-            position: relative;
-            overflow: hidden;
             transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
         }
         .card:hover {
             transform: translateY(-4px);
-            box-shadow: 0 30px 60px rgba(77, 19, 148, 0.1);
-        }
-
-        /* Barra de Acessibilidade Flutuante */
-        .accessibility-bar {
-            background: rgba(255, 255, 255, 0.3);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--border);
-            padding: 14px 5%;
-            display: flex;
-            justify-content: flex-end;
-            gap: 16px;
-        }
-        [data-theme="dark"] .accessibility-bar { background: rgba(0, 0, 0, 0.3); }
-        .accessibility-bar button {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            color: var(--text-main);
-            padding: 10px 18px;
-            cursor: pointer;
-            border-radius: 40px;
-            font-size: 0.8rem;
-            font-weight: 700;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .accessibility-bar button:hover { transform: translateY(-2px); border-color: var(--primary); box-shadow: 0 8px 20px var(--accent-glow); }
-
-        /* Header Escultural */
-        header {
-            background-color: var(--bg-card);
-            backdrop-filter: var(--blur);
-            -webkit-backdrop-filter: var(--blur);
-            border-bottom: 1px solid var(--border);
-            padding: 24px 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: var(--shadow);
-        }
-        header .logo { font-size: 1.4rem; font-weight: 700; color: var(--primary); display: flex; align-items: center; gap: 10px; }
-
-        nav ul { display: flex; list-style: none; gap: 8px; background: rgba(0,0,0,0.03); padding: 6px; border-radius: 40px; border: 1px solid var(--border); }
-        [data-theme="dark"] nav ul { background: rgba(255,255,255,0.03); }
-        nav ul li a {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 700;
-            padding: 10px 22px;
-            border-radius: 40px;
-            display: inline-block;
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        nav ul li a:hover { color: var(--text-main); }
-        nav ul li a.active { color: #ffffff; background-color: var(--primary); box-shadow: 0 8px 20px var(--accent-glow); }
-        [data-theme="dark"] nav ul li a.active { color: var(--bg-main); }
-
-        /* Abas e Animações Fluidas */
-        .tab-content { display: none; }
-        .active-tab { display: block; }
-        .fade-in { animation: smoothScale 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
-        @keyframes smoothScale {
-            from { opacity: 0; transform: scale(0.96) translateY(20px); }
-            to { opacity: 1; transform: scale(1) translateY(0); }
+            box-shadow: 0 30px 60px rgba(77, 19, 148, 0.08);
         }
 
         /* Hero Section */
-        .hero-section { text-align: center; margin-bottom: 60px; }
+        .hero-section { text-align: center; margin-bottom: 50px; }
         .hero-section h1 {
             font-size: 3.2rem;
             background: linear-gradient(135deg, var(--text-main) 30%, var(--accent));
@@ -201,52 +200,51 @@
             margin-bottom: 20px;
             line-height: 1.1;
         }
-        .welcome-msg { font-size: 1.3rem; color: var(--text-muted); max-width: 780px; margin: 0 auto; font-weight: 500; line-height: 1.8; }
+        .welcome-msg { font-size: 1.25rem; color: var(--text-muted); max-width: 780px; margin: 0 auto; font-weight: 500; }
 
-        /* Carrossel de Cinema Curvado */
-        .carousel-container {
-            position: relative;
-            width: 100%;
-            height: 520px;
-            border-radius: var(--radius);
-            overflow: hidden;
-            margin-bottom: 40px;
-            box-shadow: 0 30px 60px rgba(77, 19, 148, 0.12);
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-        .carousel-track { width: 100%; height: 100%; position: relative; }
-        .carousel-slide { position: absolute; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out; z-index: 1; }
-        .carousel-slide.active { opacity: 1; z-index: 2; }
-        .carousel-slide img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.9); }
-        .carousel-caption {
-            position: absolute;
-            bottom: 35px;
-            left: 35px;
-            background: rgba(15, 10, 28, 0.45);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            color: #ffffff;
-            padding: 20px 30px;
-            border-radius: 16px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            border: 1px solid rgba(255,255,255,0.15);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-        }
-        .carousel-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(255, 255, 255, 0.25);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.2);
-            color: #ffffff;
-            font-size: 1.1rem;
-            width: 52px;
-            height: 52px;
-            border-radius: 50%;
-            cursor: pointer;
-            z-index: 10;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        /* Ícones SVG Alinhados */
+        .icon { width: 18px; height: 18px; fill: currentColor; display: inline-block; vertical-align: middle; }
+    </style>
+</head>
+<body>
+
+    <!-- Barra de Acessibilidade -->
+    <div class="accessibility-bar">
+        <button onclick="alterarFonte(1)" aria-label="Aumentar texto">
+            <svg class="icon" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg> A+
+        </button>
+        <button onclick="alterarFonte(-1)" aria-label="Diminuir texto">
+            <svg class="icon" viewBox="0 0 24 24"><path d="M19 13H5v-2h14v2z"/></svg> A-
+        </button>
+        <button onclick="toggleTema()" id="theme-toggle" aria-label="Alternar tema escuro/claro">
+            <svg class="icon" viewBox="0 0 24 24"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"/></svg> Tema
+        </button>
+    </div>
+
+    <!-- Header e Navegação -->
+    <header>
+        <div class="logo">
+            <svg class="icon" style="width:28px; height:28px;" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+            Vozes da Igualdade
+        </div>
+        <nav>
+            <ul>
+                <li><button class="nav-link active" onclick="switchTab('inicio')">Início</button></li>
+                <li><button class="nav-link" onclick="switchTab('manifesto')">Manifesto</button></li>
+                <li><button class="nav-link" onclick="switchTab('projetos')">Projetos</button></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Conteúdo Principal -->
+    <main class="container">
+        
+        <!-- Aba: Início -->
+        <section id="inicio" class="tab-content active-tab fade-in">
+            <div class="hero-section">
+                <h1>Consciência, Empatia e Respeito</h1>
+                <p class="welcome-msg">Espaço dedicado à amplificação de vozes plurais, promoção da equidade social e construção de pontes para um futuro mais inclusivo.</p>
+            </div>
+            <div class="card">
+                <h3>Destaque do Mês</h3>
+// Gerenciamento de Abasfunction switchTab(tabId) {// Remove classes ativas de todas as abasdocument.querySelectorAll('.tab-content').forEach(tab => {tab.classList.remove('active-tab', 'fade-in');});document.querySelectorAll('.nav-link').forEach(link => {link.classList.remove('active');});
