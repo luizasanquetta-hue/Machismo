@@ -1,273 +1,167 @@
 <!DOCTYPE html>
 <html lang="pt-BR" data-theme="light">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portal Vozes da Equality — Consciência e Respeito</title>
-    
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Vozes da Igualdade</title>
     <style>
-        /* ==========================================================================
-           Design System: Glassmorphic Cyber-Noir com Paleta Roxa, Rosa e Laranja
-           ========================================================================== */
         @import url('https://googleapis.com');
-
         :root {
-            /* Tons base mantendo o Roxo como fundo principal e inserindo Rosa e Laranja */
-            --bg-main: #140a24;          /* Roxo escuro profundo acolhedor */
-            --bg-card: rgba(255, 255, 255, 0.08); /* Glassmorphism escuro */
-            --text-main: #f3efff;        
-            --text-muted: #bdaec6;       
-            --primary: #f72585;          /* Rosa vibrante */
-            --primary-light: #24113a;    
-            --accent: #ffb703;           /* Laranja caloroso */
-            --danger: #e63946;           /* Vermelho Emergência */
-            --accent-glow: rgba(247, 37, 133, 0.2);
-            --border: rgba(255, 255, 255, 0.1); 
-            --radius: 24px;              
-            --font-base: 16px;
-            --blur: blur(24px);
-            --shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            --bg-main:#140a24; --bg-card:rgba(255,255,255,0.08); --text-main:#f3efff; --text-muted:#bdaec6;       
+            --primary:#f72585; --accent:#ffb703; --danger:#e63946; --radius:24px; --font-base:16px; --blur:blur(24px);
         }
-
-        [data-theme="dark"] {
-            /* Variação ainda mais profunda para o modo escuro */
-            --bg-main: #0a0414;          
-            --bg-card: rgba(10, 5, 20, 0.7);
-            --text-main: #e2dbf0;
-            --text-muted: #9587a3;
-            --primary: #ff007f;
-            --accent: #fb8500;
-            --border: rgba(255, 255, 255, 0.06);
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
+        [data-theme="dark"] { --bg-main:#0a0414; --bg-card:rgba(10,5,20,0.7); --primary:#ff007f; --accent:#fb8500; }
+        * { box-sizing:border-box; margin:0; padding:0; }
         body {
-            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-            font-size: var(--font-base);
-            background-color: var(--bg-main);
-            color: var(--text-main);
-            line-height: 1.65;
-            letter-spacing: -0.015em;
-            -webkit-font-smoothing: antialiased;
-            overflow-x: hidden;
-            position: relative;
-            transition: background-color 0.5s ease, color 0.5s ease;
+            font-family:'Plus Jakarta Sans',sans-serif; font-size:var(--font-base); background:var(--bg-main);
+            color:var(--text-main); line-height:1.6; position:relative; overflow-x:hidden; min-height:100vh;
         }
-
-        /* Fundo Dinâmico com Orbes de Luz Ambientais (Roxo, Rosa e Laranja) */
-        body::before, body::after, .bg-orb {
-            content: '';
-            position: fixed;
-            border-radius: 50%;
-            filter: blur(100px);
-            z-index: -1;
-            pointer-events: none;
-            mix-blend-mode: screen;
-            opacity: 0.6;
+        body::before, body::after {
+            content:''; position:fixed; border-radius:50%; filter:blur(100px); z-index:-1; opacity:0.5; mix-blend-mode:screen;
         }
-        body::before { 
-            top: -10%; 
-            left: -10%; 
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, #7b2cbf 0%, transparent 70%); /* Roxo */
-            animation: floatGlow 14s infinite alternate ease-in-out;
-        }
-        body::after { 
-            bottom: -10%; 
-            right: -10%; 
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, var(--primary) 0%, transparent 70%); /* Rosa */
-            animation: floatGlow 12s infinite alternate ease-in-out;
-            animation-delay: 4s;
-        }
-        .bg-orb {
-            top: 40%;
-            left: 50%;
-            width: 450px;
-            height: 450px;
-            background: radial-gradient(circle, var(--accent) 0%, transparent 70%); /* Laranja */
-            animation: floatGlow 16s infinite alternate ease-in-out;
-            animation-delay: 2s;
-        }
-
-        @keyframes floatGlow {
-            0% { transform: translate(0, 0) scale(1); }
-            100% { transform: translate(60px, 40px) scale(1.15); }
-        }
-
-        h1, h2, h3, h4, .logo {
-            font-family: 'Space Grotesk', sans-serif;
-            font-weight: 700;
-            letter-spacing: -0.04em;
-        }
-
-        /* Barra de Acessibilidade e Segurança Flutuante */
+        body::before { top:-10%; left:-10%; width:600px; height:600px; background:radial-gradient(circle,#7b2cbf 0%,transparent 70%); }
+        body::after { bottom:-10%; right:-10%; width:500px; height:500px; background:radial-gradient(circle,var(--primary) 0%,transparent 70%); }
+        h1, h2, h3, h4, .logo { font-family:'Space Grotesk',sans-serif; font-weight:700; }
         .accessibility-bar {
-            background: rgba(20, 10, 36, 0.4);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--border);
-            padding: 10px 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 12px;
-            position: sticky;
-            top: 0;
-            z-index: 101;
+            background:rgba(20,10,36,0.4); backdrop-filter:blur(12px); padding:10px 5%; display:flex; justify-content:space-between; position:sticky; top:0; z-index:101;
         }
-        .accessibility-controls {
-            display: flex;
-            gap: 12px;
-        }
-        
+        .accessibility-controls { display:flex; gap:10px; }
         .accessibility-bar button {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            color: var(--text-main);
-            padding: 8px 16px;
-            cursor: pointer;
-            border-radius: 40px;
-            font-size: 0.85rem;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            background:var(--bg-card); border:1px solid rgba(255,255,255,0.1); color:var(--text-main); padding:6px 14px;
+            cursor:pointer; border-radius:40px; font-size:0.85rem; font-weight:700; display:flex; align-items:center; gap:6px;
         }
-        .accessibility-bar button:hover { 
-            transform: translateY(-2px); 
-            border-color: var(--primary); 
-            box-shadow: 0 8px 20px var(--accent-glow); 
-        }
-
-        /* Botão do Pânico (Saída Rápida) */
-        .btn-panic {
-            background: var(--danger) !important;
-            color: #fff !important;
-            border: none !important;
-            box-shadow: 0 4px 15px rgba(230, 57, 70, 0.4);
-        }
-        .btn-panic:hover {
-            background: #b81d24 !important;
-            transform: scale(1.05);
-        }
-
-        /* Header */
+        .btn-panic { background:var(--danger)!important; border:none!important; box-shadow:0 4px 15px rgba(230,57,70,0.4); }
         header {
-            background-color: rgba(20, 10, 36, 0.6);
-            backdrop-filter: var(--blur);
-            -webkit-backdrop-filter: var(--blur);
-            border-bottom: 1px solid var(--border);
-            padding: 20px 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 53px; /* Fica logo abaixo da barra utilitária */
-            z-index: 100;
-            box-shadow: var(--shadow);
+            background:rgba(20,10,36,0.6); backdrop-filter:var(--blur); border-bottom:1px solid rgba(255,255,255,0.1);
+            padding:15px 5%; display:flex; justify-content:space-between; align-items:center; position:sticky; top:45px; z-index:100;
         }
-        header .logo { font-size: 1.5rem; color: var(--primary); display: flex; align-items: center; gap: 10px; }
-        header .logo span { color: var(--accent); }
-
-        nav ul { display: flex; list-style: none; gap: 8px; background: rgba(255,255,255,0.05); padding: 6px; border-radius: 40px; border: 1px solid var(--border); }
-        
-        nav ul li button {
-            background: transparent;
-            border: none;
-            color: var(--text-muted);
-            cursor: pointer;
-            font-size: 0.9rem;
-            font-weight: 700;
-            padding: 10px 22px;
-            border-radius: 40px;
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        header .logo { font-size:1.4rem; color:var(--primary); }
+        header .logo span { color:var(--accent); }
+        nav ul { display:flex; list-style:none; gap:6px; background:rgba(255,255,255,0.05); padding:4px; border-radius:40px; }
+        nav ul button {
+            background:transparent; border:none; color:var(--text-muted); cursor:pointer; font-size:0.85rem;
+            font-weight:700; padding:8px 18px; border-radius:40px;
         }
-        nav ul li button:hover { color: var(--text-main); }
-        nav ul li button.active { color: #140a24; background-color: var(--accent); box-shadow: 0 8px 20px rgba(255, 183, 3, 0.3); }
-
-        /* Container Principal */
-        .container {
-            max-width: 1040px;
-            margin: 40px auto;
-            padding: 0 24px;
-            min-height: 60vh;
-        }
-
-        /* Abas e Animações */
-        .tab-content { display: none; }
-        .tab-content.active-tab { display: block; }
-        
-        .fade-in { animation: smoothScale 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-        @keyframes smoothScale {
-            from { opacity: 0; transform: scale(0.98) translateY(15px); }
-            to { opacity: 1; transform: scale(1) translateY(0); }
-        }
-
-        /* Cartões */
+        nav ul button.active { color:#140a24; background:var(--accent); }
+        .container { max-width:1000px; margin:30px auto; padding:0 20px; }
+        .tab-content { display:none; animation:smooth 0.4s ease forwards; }
+        .tab-content.active-tab { display:block; }
+        @keyframes smooth { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }
         .card {
-            background: var(--bg-card);
-            backdrop-filter: var(--blur);
-            -webkit-backdrop-filter: var(--blur);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            padding: 40px;
-            box-shadow: var(--shadow);
-            margin-bottom: 30px;
-            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+            background:var(--bg-card); backdrop-filter:var(--blur); border:1px solid rgba(255,255,255,0.1);
+            border-radius:var(--radius); padding:30px; margin-bottom:20px;
         }
-        .card:hover {
-            transform: translateY(-4px);
-            border-color: rgba(247, 37, 133, 0.3);
-        }
-
-        /* Hero Section */
-        .hero-section { text-align: center; margin-bottom: 40px; }
+        .hero-section { text-align:center; margin-bottom:30px; }
         .hero-section h1 {
-            font-size: 3.2rem;
-            background: linear-gradient(135deg, var(--text-main) 20%, var(--primary) 60%, var(--accent));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 20px;
-            line-height: 1.1;
+            font-size:2.8rem; background:linear-gradient(135deg,#fff,var(--primary),var(--accent));
+            -webkit-background-clip:text; -webkit-text-fill-color:transparent; margin-bottom:10px;
         }
-        .welcome-msg { font-size: 1.25rem; color: var(--text-muted); max-width: 780px; margin: 0 auto; font-weight: 500; }
-
-        /* Banner de Apoio Emocional */
         .support-banner {
-            background: linear-gradient(135deg, rgba(247, 37, 133, 0.15), rgba(255, 183, 3, 0.15));
-            border: 1px solid var(--primary);
-            border-radius: var(--radius);
-            padding: 30px;
-            margin-bottom: 30px;
-            text-align: center;
-        }
-        .support-banner h2 { color: var(--primary); margin-bottom: 10px; }
-        .support-banner p { font-size: 1.1rem; font-weight: 600; color: #fff; }
-
-        /* Formário do Portal de Escuta */
-        .form-group {
-            margin-top: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
+            background:linear-gradient(135deg,rgba(247,37,133,0.15),rgba(255,183,3,0.15));
+            border:1px solid var(--primary); border-radius:var(--radius); padding:25px; text-align:center; margin-bottom:20px;
         }
         textarea {
-            width: 100%;
-            height: 150px;
-            background: rgba(0, 0, 0, 0.2);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 15px;
-            color: #fff;
-            font-family: inherit;
-            font-size: 1rem;
-resize: none;transition: border-color 0.3s;}textarea:focus {outline: none;border-color: var(--primary);}.btn-submit {background: linear-gradient(135deg, var(--primary), var(--accent));color: #140a24;border: none;padding: 14px 28px;border-radius: 40px;font-weight: 700;font-size: 1rem;cursor: pointer;align-self: flex-start;transition: transform 0.2s, box-shadow 0.2s;}.btn-submit:hover {transform: translateY(-2px);box-shadow: 0 8px 25px rgba(247, 37, 133, 0.4);}
+            width:100%; height:120px; background:rgba(0,0,0,0.2); border:1px solid rgba(255,255,255,0.1);
+            border-radius:12px; padding:12px; color:#fff; font-size:1rem; resize:none; margin:15px 0 10px;
+        }
+        textarea:focus { outline:none; border-color:var(--primary); }
+        .btn-submit {
+            background:linear-gradient(135deg,var(--primary),var(--accent)); color:#140a24; border:none;
+            padding:12px 24px; border-radius:40px; font-weight:700; cursor:pointer;
+        }
+        .welcome-box {
+            display:none; margin-top:20px; background:rgba(255,183,3,0.1); border-left:4px solid var(--accent); border-radius:12px; padding:15px;
+        }
+        .protocol-badge { display:inline-block; background:rgba(255,255,255,0.05); padding:4px 8px; border-radius:6px; font-family:monospace; font-size:0.8rem; margin-top:10px; }
+        .info-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:15px; margin-top:15px; }
+        .info-item { background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.1); border-radius:12px; padding:15px; }
+        .info-item h4 { color:var(--primary); margin-bottom:5px; }
+        .emergency-card { border:1px dashed var(--accent); background:rgba(255,183,3,0.02); }
+        .emergency-number { display:inline-block; background:var(--accent); color:#140a24; padding:4px 10px; border-radius:6px; font-weight:700; margin-top:8px; }
+        .icon { width:16px; height:16px; fill:currentColor; display:inline-block; vertical-align:middle; }
+    </style>
+</head>
+<body>
+    <div class="accessibility-bar">
+        <div class="accessibility-controls">
+            <button onclick="altFonte(1)">A+</button><button onclick="altFonte(-1)">A-</button>
+            <button onclick="toggleTema()">Contraste</button>
+        </div>
+        <button class="btn-panic" onclick="panic()">SAÍDA RÁPIDA (ESC)</button>
+    </div>
+    <header>
+        <div class="logo">Vozes da <span>Igualdade</span></div>
+        <nav>
+            <ul>
+                <li><button class="nav-link active" onclick="tab('inicio')">Início</button></li>
+                <li><button class="nav-link" onclick="tab('escuta')">Escuta</button></li>
+                <li><button class="nav-link" onclick="tab('info')">Conscientização</button></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="container">
+        <section id="inicio" class="tab-content active-tab">
+            <div class="hero-section">
+                <h1>Vozes da Igualdade</h1>
+                <p style="color:var(--text-muted)">Espaço seguro e anônimo contra a violência de gênero.</p>
+            </div>
+            <div class="support-banner">
+                <h2>Você não está sozinha.</h2>
+                <p>Seus sentimentos são legítimos, sua voz importa e estamos aqui por você.</p>
+            </div>
+            <div class="card">
+                <h3>O Nosso Propósito</h3>
+                <p style="color:var(--text-muted); margin-top:8px;">Canal protegido para entender as nuances da violência doméstica, desabafar anonimamente e conhecer redes institucionais de apoio.</p>
+            </div>
+        </section>
+        <section id="escuta" class="tab-content">
+            <div class="card">
+                <h2>Portal de Escuta Coletiva</h2>
+                <p style="color:var(--text-muted); font-size:0.9rem;">Relato 100% anônimo. Não guardamos cookies, dados pessoais ou IP.</p>
+                <textarea id="msg" placeholder="Escreva livremente o que está em seu coração..."></textarea>
+                <button class="btn-submit" onclick="enviar()">Enviar de Forma Segura</button>
+                <div id="acolhe" class="welcome-box">
+                    <h4>Seu relato foi recebido com respeito.</h4>
+                    <p style="font-size:0.9rem; margin-top:5px;">Obrigado por confiar em nós. Romper o silêncio é um passo gigante. Se precisar de ajuda direta, veja os canais de Conscientização.</p>
+                    <div class="protocol-badge" id="prot"></div>
+                </div>
+            </div>
+        </section>
+        <section id="info" class="tab-content">
+            <div class="card">
+                <h2>Formatos de Violência Doméstica</h2>
+                <div class="info-grid">
+                    <div class="info-item"><h4>Física</h4><p style="font-size:0.85rem; color:var(--text-muted);">Ofensa à integridade ou à saúde corporal.</p></div>
+                    <div class="info-item"><h4>Psicológica</h4><p style="font-size:0.85rem; color:var(--text-muted);">Dano emocional, controle ou redução da autoestima.</p></div>
+                    <div class="info-item"><h4>Sexual</h4><p style="font-size:0.85rem; color:var(--text-muted);">Coerção para participar de relação não desejada.</p></div>
+                    <div class="info-item"><h4>Patrimonial</h4><p style="font-size:0.85rem; color:var(--text-muted);">Retenção ou destruição de objetos, bens e valores.</p></div>
+                </div>
+                <div class="card emergency-card" style="margin-top:20px; padding:20px;">
+                    <h3>Central de Ajuda</h3>
+                    <p style="font-size:0.9rem;">Atendimento gratuito, confidencial e 24h em todo o Brasil.</p>
+                    <div class="emergency-number">Ligue 180</div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script>
+        function tab(id){
+            document.querySelectorAll('.tab-content').forEach(t=>t.classList.remove('active-tab'));
+            document.querySelectorAll('.nav-link').forEach(l=>l.classList.remove('active'));
+            document.getElementById(id).classList.add('active-tab');
+            event.currentTarget.classList.add('active');
+        }
+        function enviar(){
+const t=document.getElementById('msg'), b=document.getElementById('acolhe'), p=document.getElementById('prot');
+if(t.value.trim()!==""){t.value=""; b.style.display="block";
+p.innerText="Protocolo Anônimo: #E-"+Math.floor(100000+Math.random()*900000);
+b.scrollIntoView({behavior:'smooth'}); 
+}else{alert("Por favor, digite algo antes de enviar.");}
+}
+function panic(){window.location.replace("google.com");}
+window.addEventListener('keydown',e=>{if(e.key==='Escape')panic();});
+function toggleTema(){
+    const h=document.documentElement; h.setAttribute('data-theme',h.getAttribute('data-theme')==='dark'?'light':'dark');
+    }
+    let f=16;
+    function altFonte(a){
+        f=Math.max(12,Math.min(24,f+a)); document.documentElement.style.setProperty('--font-base',f+'px');}
