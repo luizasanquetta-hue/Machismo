@@ -2,158 +2,161 @@
 <html lang="pt-BR" data-theme="light">
 <head>
     <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portal Vozes da Igualdade</title>
+    <title>Portal Vozes da Igualdade — Consciência e Respeito</title>
     <style>
         @import url('https://googleapis.com');
         :root {
-            --bg-main:#140a24; --bg-card:rgba(255,255,255,0.08); --text-main:#f3efff; --text-muted:#bdaec6;       
-            --primary:#f72585; --accent:#ffb703; --danger:#e63946; --radius:24px; --font-base:16px; --blur:blur(24px);
+            --bg-main:#140a24; --bg-card:rgba(255,255,255,0.07); --text-main:#f3efff; --text-muted:#bdaec6;       
+            --primary:#f72585; --accent:#ffb703; --danger:#e63946; --radius:20px; --font-base:16px; --blur:blur(24px);
         }
-        [data-theme="dark"] { --bg-main:#0a0414; --bg-card:rgba(10,5,20,0.7); --primary:#ff007f; --accent:#fb8500; }
-        * { box-sizing:border-box; margin:0; padding:0; }
+        [data-theme="dark"] { --bg-main:#0a0414; --bg-card:rgba(10,5,20,0.65); --primary:#ff007f; --accent:#fb8500; }
+        * { box-sizing:border-box; margin:0; padding:0; scroll-behavior:smooth; }
         body {
             font-family:'Plus Jakarta Sans',sans-serif; font-size:var(--font-base); background:var(--bg-main);
-            color:var(--text-main); line-height:1.6; position:relative; overflow-x:hidden; min-height:100vh;
+            color:var(--text-main); line-height:1.6; overflow-x:hidden; min-height:100vh; padding-bottom:60px;
         }
         body::before, body::after {
-            content:''; position:fixed; border-radius:50%; filter:blur(100px); z-index:-1; opacity:0.5; mix-blend-mode:screen;
+            content:''; position:fixed; border-radius:50%; filter:blur(120px); z-index:-1; opacity:0.45; mix-blend-mode:screen;
         }
-        body::before { top:-10%; left:-10%; width:600px; height:600px; background:radial-gradient(circle,#7b2cbf 0%,transparent 70%); }
-        body::after { bottom:-10%; right:-10%; width:500px; height:500px; background:radial-gradient(circle,var(--primary) 0%,transparent 70%); }
-        h1, h2, h3, h4, .logo { font-family:'Space Grotesk',sans-serif; font-weight:700; }
+        body::before { top:-10%; left:-10%; width:500px; height:500px; background:radial-gradient(circle,#7b2cbf 0%,transparent 70%); }
+        body::after { bottom:-10%; right:-10%; width:400px; height:400px; background:radial-gradient(circle,var(--primary) 0%,transparent 70%); }
+        h1, h2, h3, h4, .logo { font-family:'Space Grotesk',sans-serif; font-weight:700; letter-spacing:-0.02em; }
         .accessibility-bar {
-            background:rgba(20,10,36,0.4); backdrop-filter:blur(12px); padding:10px 5%; display:flex; justify-content:space-between; position:sticky; top:0; z-index:101;
+            background:rgba(20,10,36,0.5); backdrop-filter:blur(12px); padding:8px 5%; display:flex; justify-content:space-between; position:sticky; top:0; z-index:101; border-bottom:1px solid rgba(255,255,255,0.05);
         }
-        .accessibility-controls { display:flex; gap:10px; }
+        .accessibility-controls { display:flex; gap:8px; }
         .accessibility-bar button {
-            background:var(--bg-card); border:1px solid rgba(255,255,255,0.1); color:var(--text-main); padding:6px 14px;
-            cursor:pointer; border-radius:40px; font-size:0.85rem; font-weight:700; display:flex; align-items:center; gap:6px;
+            background:var(--bg-card); border:1px solid rgba(255,255,255,0.08); color:var(--text-main); padding:6px 12px;
+            cursor:pointer; border-radius:40px; font-size:0.8rem; font-weight:700; display:flex; align-items:center; gap:4px; transition:0.2s;
         }
-        .btn-panic { background:var(--danger)!important; border:none!important; box-shadow:0 4px 15px rgba(230,57,70,0.4); }
+        .accessibility-bar button:hover { border-color:var(--primary); }
+        .btn-panic { background:var(--danger)!important; border:none!important; font-weight:700; }
         header {
-            background:rgba(20,10,36,0.6); backdrop-filter:var(--blur); border-bottom:1px solid rgba(255,255,255,0.1);
-            padding:15px 5%; display:flex; justify-content:space-between; align-items:center; position:sticky; top:45px; z-index:100;
+            background:rgba(20,10,36,0.6); backdrop-filter:var(--blur); border-bottom:1px solid rgba(255,255,255,0.08);
+            padding:12px 5%; display:flex; justify-content:space-between; align-items:center; position:sticky; top:43px; z-index:100;
         }
-        header .logo { font-size:1.4rem; color:var(--primary); }
+        header .logo { font-size:1.3rem; color:var(--primary); }
         header .logo span { color:var(--accent); }
-        nav ul { display:flex; list-style:none; gap:6px; background:rgba(255,255,255,0.05); padding:4px; border-radius:40px; }
+        nav ul { display:flex; list-style:none; gap:4px; background:rgba(255,255,255,0.04); padding:4px; border-radius:40px; }
         nav ul button {
             background:transparent; border:none; color:var(--text-muted); cursor:pointer; font-size:0.85rem;
-            font-weight:700; padding:8px 18px; border-radius:40px;
+            font-weight:700; padding:8px 16px; border-radius:40px; transition:0.2s;
         }
+        nav ul button:hover { color:var(--text-main); }
         nav ul button.active { color:#140a24; background:var(--accent); }
-        .container { max-width:1000px; margin:30px auto; padding:0 20px; }
+        .container { max-width:960px; margin:30px auto; padding:0 20px; }
         .tab-content { display:none; animation:smooth 0.4s ease forwards; }
         .tab-content.active-tab { display:block; }
-        @keyframes smooth { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }
+        @keyframes smooth { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }
         .card {
-            background:var(--bg-card); backdrop-filter:var(--blur); border:1px solid rgba(255,255,255,0.1);
-            border-radius:var(--radius); padding:30px; margin-bottom:20px;
+            background:var(--bg-card); backdrop-filter:var(--blur); border:1px solid rgba(255,255,255,0.08);
+            border-radius:var(--radius); padding:25px; margin-bottom:20px;
         }
-        .hero-section { text-align:center; margin-bottom:30px; }
+        .hero-section { text-align:center; margin-bottom:25px; }
         .hero-section h1 {
-            font-size:2.8rem; background:linear-gradient(135deg,#fff,var(--primary),var(--accent));
-            -webkit-background-clip:text; -webkit-text-fill-color:transparent; margin-bottom:10px;
+            font-size:2.5rem; background:linear-gradient(135deg,#fff,var(--primary),var(--accent));
+            -webkit-background-clip:text; -webkit-text-fill-color:transparent; margin-bottom:8px;
         }
         .support-banner {
-            background:linear-gradient(135deg,rgba(247,37,133,0.15),rgba(255,183,3,0.15));
-            border:1px solid var(--primary); border-radius:var(--radius); padding:25px; text-align:center; margin-bottom:20px;
+            background:linear-gradient(135deg,rgba(247,37,133,0.12),rgba(255,183,3,0.12));
+            border:1px solid var(--primary); border-radius:var(--radius); padding:20px; text-align:center; margin-bottom:20px;
         }
+        .hero-img-box { width:100%; height:200px; background:linear-gradient(45deg, rgba(247,37,133,0.2), rgba(255,183,3,0.2)); border-radius:16px; display:flex; align-items:center; justify-content:center; margin-top:15px; border:1px dashed rgba(255,255,255,0.1); }
+        .carousel-view { width:100%; position:relative; overflow:hidden; border-radius:14px; margin-bottom:15px; }
+        .carousel-slide { display:none; padding:20px; text-align:center; background:rgba(0,0,0,0.15); font-style:italic; color:var(--text-muted); }
+        .carousel-slide.active-slide { display:block; animation:smooth 0.3s ease; }
         textarea {
-            width:100%; height:120px; background:rgba(0,0,0,0.2); border:1px solid rgba(255,255,255,0.1);
-            border-radius:12px; padding:12px; color:#fff; font-size:1rem; resize:none; margin:15px 0 10px;
+            width:100%; height:100px; background:rgba(0,0,0,0.25); border:1px solid rgba(255,255,255,0.08);
+            border-radius:12px; padding:12px; color:#fff; font-size:0.95rem; resize:none; margin:10px 0;
         }
         textarea:focus { outline:none; border-color:var(--primary); }
         .btn-submit {
             background:linear-gradient(135deg,var(--primary),var(--accent)); color:#140a24; border:none;
-            padding:12px 24px; border-radius:40px; font-weight:700; cursor:pointer;
+            padding:10px 20px; border-radius:40px; font-weight:700; cursor:pointer; transition:0.2s;
         }
+        .btn-submit:hover { transform:translateY(-1px); }
         .welcome-box {
-            display:none; margin-top:20px; background:rgba(255,183,3,0.1); border-left:4px solid var(--accent); border-radius:12px; padding:15px;
+            display:none; margin-top:15px; background:rgba(255,183,3,0.08); border-left:4px solid var(--accent); border-radius:10px; padding:15px;
         }
-        .protocol-badge { display:inline-block; background:rgba(255,255,255,0.05); padding:4px 8px; border-radius:6px; font-family:monospace; font-size:0.8rem; margin-top:10px; }
-        .info-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:15px; margin-top:15px; }
-        .info-item { background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.1); border-radius:12px; padding:15px; }
-        .info-item h4 { color:var(--primary); margin-bottom:5px; }
-        .emergency-card { border:1px dashed var(--accent); background:rgba(255,183,3,0.02); }
-        .emergency-number { display:inline-block; background:var(--accent); color:#140a24; padding:4px 10px; border-radius:6px; font-weight:700; margin-top:8px; }
+        .info-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:12px; margin-top:12px; }
+        .info-item { background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:15px; }
+        .info-item h4 { color:var(--primary); margin-bottom:4px; }
+        .quiz-q { margin-bottom:15px; padding-bottom:15px; border-bottom:1px dashed rgba(255,255,255,0.08); }
+        .quiz-q p { font-weight:700; margin-bottom:8px; }
+        .quiz-opts label { display:block; background:rgba(255,255,255,0.03); padding:8px 12px; margin-bottom:6px; border-radius:8px; border:1px solid rgba(255,255,255,0.05); cursor:pointer; }
+        .quiz-opts input { margin-right:8px; }
+        .ref-list { list-style:none; }
+        .ref-list li { margin-bottom:10px; padding-left:12px; border-left:2px solid var(--primary); }
+        .ref-list a { color:var(--accent); text-decoration:none; font-weight:700; }
+        .ref-list a:hover { text-decoration:underline; }
+        .btn-top {
+            position:fixed; bottom:20px; right:20px; background:var(--accent); color:#140a24; border:none;
+            width:40px; height:40px; border-radius:50%; font-weight:700; cursor:pointer; display:none; align-items:center; justify-content:center; box-shadow:0 4px 10px rgba(0,0,0,0.3); z-index:99;
+        }
         .icon { width:16px; height:16px; fill:currentColor; display:inline-block; vertical-align:middle; }
+        @media(max-width:680px){
+            header { flex-direction:column; gap:10px; top:80px; }
+            .accessibility-bar { flex-direction:column; gap:8px; align-items:center; }
+        }
     </style>
 </head>
 <body>
+    <button class="btn-top" id="btnTop" onclick="topFunction()">▲</button>
+    
     <div class="accessibility-bar">
         <div class="accessibility-controls">
             <button onclick="altFonte(1)">A+</button><button onclick="altFonte(-1)">A-</button>
-            <button onclick="toggleTema()">Contraste</button>
+            <button onclick="toggleTema()">Contraste/Tema</button>
         </div>
         <button class="btn-panic" onclick="panic()">SAÍDA RÁPIDA (ESC)</button>
     </div>
+
     <header>
         <div class="logo">Vozes da <span>Igualdade</span></div>
         <nav>
             <ul>
                 <li><button class="nav-link active" onclick="tab('inicio', event)">Início</button></li>
                 <li><button class="nav-link" onclick="tab('escuta', event)">Escuta</button></li>
-                <li><button class="nav-link" onclick="tab('info', event)">Conscientização</button></li>
+                <li><button class="nav-link" onclick="tab('quiz', event)">Quiz</button></li>
+                <li><button class="nav-link" onclick="tab('refs', event)">Referências</button></li>
             </ul>
         </nav>
     </header>
+
     <main class="container">
+        <!-- 1. PÁGINA INICIAL -->
         <section id="inicio" class="tab-content active-tab">
             <div class="hero-section">
-                <h1>Vozes da稳Igualdade</h1>
-                <p style="color:var(--text-muted)">Espaço seguro e anônimo contra a violência de gênero.</p>
+                <h1>Vozes da Igualdade</h1>
+                <p style="color:var(--text-muted)">Consciência, Respeito e Combate à Violência de Gênero</p>
+                <div class="hero-img-box">
+                    <svg width="60" height="60" viewBox="0 0 24 24" fill="var(--primary)"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                </div>
             </div>
             <div class="support-banner">
-                <h2>Você não está sozinha.</h2>
-                <p>Seus sentimentos são legítimos, sua voz importa e estamos aqui por você.</p>
+                <h2>Mensagem de Acolhimento</h2>
+                <p>"Bem-vindo ao Portal Vozes da Igualdade. Aqui você encontrará informações, orientações e apoio sobre situações de vulnerabilidade, violência doméstica e direitos no ambiente social e escolar."</p>
             </div>
             <div class="card">
-                <h3>O Nosso Propósito</h3>
-                <p style="color:var(--text-muted); margin-top:8px;">Canal protegido para entender as nuances da violência doméstica, desabafar anonimamente e conhecer redes institucionais de apoio.</p>
-            </div>
-        </section>
-        <section id="escuta" class="tab-content">
-            <div class="card">
-                <h2>Portal de Escuta Coletiva</h2>
-                <p style="color:var(--text-muted); font-size:0.9rem;">Relato 100% anônimo. Não guardamos cookies, dados pessoais ou IP.</p>
-                <textarea id="msg" placeholder="Escreva livremente o que está em seu coração..."></textarea>
-                <button class="btn-submit" onclick="enviar()">Enviar de Forma Segura</button>
-                <div id="acolhe" class="welcome-box">
-                    <h4>Seu relato foi recebido com respeito.</h4>
-                    <p style="font-size:0.9rem; margin-top:5px;">Obrigado por confiar em nós. Romper o silêncio é um passo gigante. Se precisar de ajuda direta, veja os canais de Conscientização.</p>
-                    <div class="protocol-badge" id="prot"></div>
-                </div>
-            </div>
-        </section>
-        <section id="info" class="tab-content">
-            <div class="card">
-                <h2>Formatos de Violência Doméstica</h2>
-                <div class="info-grid">
-                    <div class="info-item"><h4>Física</h4><p style="font-size:0.85rem; color:var(--text-muted);">Ofensa à integridade ou à saúde corporal.</p></div>
-                    <div class="info-item"><h4>Psicológica</h4><p style="font-size:0.85rem; color:var(--text-muted);">Dano emocional, controle ou redução da autoestima.</p></div>
-                    <div class="info-item"><h4>Sexual</h4><p style="font-size:0.85rem; color:var(--text-muted);">Coerção para participar de relação não desejada.</p></div>
-                    <div class="info-item"><h4>Patrimonial</h4><p style="font-size:0.85rem; color:var(--text-muted);">Retenção ou destruição de objetos, bens e valores.</p></div>
-                </div>
-                <div class="card emergency-card" style="margin-top:20px; padding:20px;">
-                    <h3>Central de Ajuda</h3>
-                    <p style="font-size:0.9rem;">Atendimento gratuito, confidencial e 24h em todo o Brasil.</p>
-                    <div class="emergency-number">Ligue 180</div>
-                </div>
-            </div>
-        </section>
-    </main>
-    <script>
-        function tab(id, e){
-            document.querySelectorAll('.tab-content').forEach(t=>t.classList.remove('active-tab'));
-            document.querySelectorAll('.nav-link').forEach(l=>l.classList.remove('active'));
-            document.getElementById(id).classList.add('active-tab');
-            if(e) e.currentTarget.classList.add('active');
-        }
-function enviar(){const t=document.getElementById('msg'), b=document.getElementById('acolhe'), 
-p=document.getElementById('prot');if(t.value.trim()!==""){
-    t.value=""; b.style.display="block";p.innerText="Protocolo Anônimo: #E-"+Math.floor(100000+Math.random()*900000);
-    b.scrollIntoView({behavior:'smooth'});}else{alert("Por favor, digite algo antes de enviar.");}}
-    function panic(){window.location.replace("google.com");}window.addEventListener('keydown',e=>{if(e.key==='Escape')panic();});
-    function toggleTema(){const h=document.documentElement; h.setAttribute('data-theme',h.getAttribute('data-theme')==='dark'?'light':'dark');
-    }let f=16;function altFonte(a){f=Math.max(12,Math.min(24,f+a)); document.documentElement.style.setProperty('--font-base',f+'px');}
+                <h3>Carrossel de Conscientização</h3>
+                <div class="carousel-view">
+                    <div class="carousel-slide active-slide">"O respeito às diferenças é o pilar de uma sociedade justa e livre de abusos."</div>
+                    <div class="carousel-slide">"Você não está sozinha. Existem redes de proteção prontas para te acolher."</div>
+"Entender os sinais de um relacionamento abusivo é o primeiro passo para a prevenção."
+Próxima Frase
+function tab(id, e){document.querySelectorAll('.tab-content').forEach(t=>t.classList.remove('active-tab'));document.querySelectorAll('.nav-link').forEach(l=>l.classList.remove('active'));document.getElementById(id).classList.add('active-tab');if(e) e.currentTarget.classList.add('active');}
+function enviar(){
+    const t=document.getElementById('msg'), b=document.getElementById('acolhe');if(t.value.trim()!==""){ t.value=""; b.style.display="block"; 
+    b.scrollIntoView({behavior:'smooth'}); }else{ alert("Por favor, digite suas linhas antes de simular o envio."); }}
+    let cIdx = 0;function moveCarousel(){
+        const slides = document.querySelectorAll('.carousel-slide');slides[cIdx].classList.remove('active-slide');
+        cIdx = (cIdx + 1) % slides.length;slides[cIdx].classList.add('active-slide');}
+        function verificarQuiz(){let nota = 0;for(let i=1; i<=5; i++){
+            const opt = document.querySelector(input[name="q${i}"]:checked);if(opt && opt.value === "1") nota++;}
+            const resBox = document.getElementById('quiz-res');resBox.style.display = "block";resBox.innerHTML = <h4>Resultado da Avaliação:</h4><p>Você acertou <strong>${nota} de 5</strong> questões do nosso teste educativo.</p>;resBox.scrollIntoView({behavior:'smooth'});
+            }
+            function panic(){ window.location.replace("google.com"); }window.addEventListener('keydown', e=>{ if(e.key==='Escape') panic(); });
+            function toggleTema(){const h=document.documentElement; h.setAttribute('data-theme', h.getAttribute('data-theme')==='dark'?'light':'dark');
+            }let f=16;function altFonte(a){
+                f=Math.max(12, Math.min(24, f+a)); document.documentElement.style.setProperty('--font-base', f+'px');}
+                let bTop = document.getElementById("btnTop");window.onscroll = function() { if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) { bTop.style.display = "flex"; } else { bTop.style.display = "none"; } };function topFunction() { document.body.scrollTop = 0; document.documentElement.scrollTop = 0; }
