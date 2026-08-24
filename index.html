@@ -92,16 +92,16 @@
         <div class="logo">Vozes da <span>Igualdade</span></div>
         <nav>
             <ul>
-                <li><button class="nav-link active" onclick="tab('inicio')">Início</button></li>
-                <li><button class="nav-link" onclick="tab('escuta')">Escuta</button></li>
-                <li><button class="nav-link" onclick="tab('info')">Conscientização</button></li>
+                <li><button class="nav-link active" onclick="tab('inicio', event)">Início</button></li>
+                <li><button class="nav-link" onclick="tab('escuta', event)">Escuta</button></li>
+                <li><button class="nav-link" onclick="tab('info', event)">Conscientização</button></li>
             </ul>
         </nav>
     </header>
     <main class="container">
         <section id="inicio" class="tab-content active-tab">
             <div class="hero-section">
-                <h1>Vozes da Igualdade</h1>
+                <h1>Vozes da稳Igualdade</h1>
                 <p style="color:var(--text-muted)">Espaço seguro e anônimo contra a violência de gênero.</p>
             </div>
             <div class="support-banner">
@@ -144,24 +144,16 @@
         </section>
     </main>
     <script>
-        function tab(id){
+        function tab(id, e){
             document.querySelectorAll('.tab-content').forEach(t=>t.classList.remove('active-tab'));
             document.querySelectorAll('.nav-link').forEach(l=>l.classList.remove('active'));
             document.getElementById(id).classList.add('active-tab');
-            event.currentTarget.classList.add('active');
+            if(e) e.currentTarget.classList.add('active');
         }
-        function enviar(){
-const t=document.getElementById('msg'), b=document.getElementById('acolhe'), p=document.getElementById('prot');
-if(t.value.trim()!==""){t.value=""; b.style.display="block";
-p.innerText="Protocolo Anônimo: #E-"+Math.floor(100000+Math.random()*900000);
-b.scrollIntoView({behavior:'smooth'}); 
-}else{alert("Por favor, digite algo antes de enviar.");}
-}
-function panic(){window.location.replace("google.com");}
-window.addEventListener('keydown',e=>{if(e.key==='Escape')panic();});
-function toggleTema(){
-    const h=document.documentElement; h.setAttribute('data-theme',h.getAttribute('data-theme')==='dark'?'light':'dark');
-    }
-    let f=16;
-    function altFonte(a){
-        f=Math.max(12,Math.min(24,f+a)); document.documentElement.style.setProperty('--font-base',f+'px');}
+function enviar(){const t=document.getElementById('msg'), b=document.getElementById('acolhe'), 
+p=document.getElementById('prot');if(t.value.trim()!==""){
+    t.value=""; b.style.display="block";p.innerText="Protocolo Anônimo: #E-"+Math.floor(100000+Math.random()*900000);
+    b.scrollIntoView({behavior:'smooth'});}else{alert("Por favor, digite algo antes de enviar.");}}
+    function panic(){window.location.replace("google.com");}window.addEventListener('keydown',e=>{if(e.key==='Escape')panic();});
+    function toggleTema(){const h=document.documentElement; h.setAttribute('data-theme',h.getAttribute('data-theme')==='dark'?'light':'dark');
+    }let f=16;function altFonte(a){f=Math.max(12,Math.min(24,f+a)); document.documentElement.style.setProperty('--font-base',f+'px');}
